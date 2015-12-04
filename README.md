@@ -16,11 +16,10 @@ Experimento de Django + Angular
 ### H1
 - Debo poder crear un proyecto con al menos un sprint
 - Debo poder crear un sprint con fecha de inicio
-- Debo poder crear un sprint con duración
-- Debo poder crear un sprint donde pueda agregar comentarios
-- Debo poder crear un sprint donde pueda agragar Documentos Adjuntos
-- Como miembro del equipo me gustaria poder saber que miembros son los mas antiguos
-- Como administrador me gustaria poder cambiar la frecuencia de los Sprints
+- Debo poder crear un sprint con duración de la misma
+- Debo poder crear un sprint con descripción 
+- Debo poder crear un sprint junto la opcion de agregar Documentos Adjuntos
+- debo poder editar los datos del Sprint.
 
 ### H2
 - Debo poder crear una tarea con estado inicial de BackLog
