@@ -60,7 +60,7 @@ class Persona(models.Model):
 
 
 class Miembro(models.Model):
-    persona = models.ForeignKey(Persona,default=)
+    persona = models.ForeignKey(Persona)
     proyecto = models.ForeignKey(Proyecto)
     def __unicode__(self):
         return self.nombre
