@@ -28,4 +28,5 @@ Experimento de Django + Angular
 - Debo poder modificar una tarea para actualizar la fecha estimada de finalización
 
 ### H3
+- descripcion
 - 
