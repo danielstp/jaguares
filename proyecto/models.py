@@ -41,6 +41,7 @@ class Proyecto(models.Model):
     nombre = models.CharField(_(u'Proyecto'), max_length=250)
     descripcion = models.CharField(_(u'Descripción'), max_length=250)
     creado = models.DateTimeField(default=datetime.now(), editable=False)
+    fechaInicio = models.DateTimeField(_(u'Fecha inicio'), default=datetime.now(), editable=True)
     def __unicode__(self):
         return self.nombre
 
@@ -67,6 +68,7 @@ class Documento(models.Model):
 
 class Sprint(models.Model):
     proyecto = models.ForeignKey(Proyecto)
+    descripcion = models.TextField(_(u'Descripcion'), default='')
     inicio = models.DateTimeField(default=datetime.now())
     fin = models.DateTimeField(default=datetime.now())
     duracion = models.DurationField()
