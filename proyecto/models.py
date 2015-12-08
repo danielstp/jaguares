@@ -25,10 +25,6 @@ class HistoriaTarea(models.Model):
         return self.nombre
 
 
-class Tarea(models.Model):
-    titulo = models.CharField(_(u'Titulo'),max_length=200,default='')
-    def __unicode__(self):
-        return self.nombre
 
 
 class Rol(models.Model):
@@ -99,6 +95,16 @@ class Sprint(models.Model):
     def __unicode__(self):
         return self.nombre
 
+class Tarea(models.Model):
+    titulo = models.CharField(_(u'Titulo'),max_length=200,default='')
+    descripcion = models.TextField(_(u'Descripcion'),default='')
+    tiempoInicioEstimado = models.DateTimeField(_(u'Fecha de Inicio (Estimado)'), default=datetime.now(), editable=True)
+    tiempoFinalizacionEstimado = models.DateTimeField(_(u'Fecha de finalizacion (Estimado)'), default=datetime.now(), editable=True)
+    documento = models.ForeignKey(Documento)
+    miembro = models.ForeignKey(Miembro)
+    estado = models.ForeignKey(Estado)
+    def __unicode__(self):
+        return self.nombre
 
 
 
