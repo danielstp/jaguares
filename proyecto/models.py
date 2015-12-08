@@ -26,6 +26,7 @@ class HistoriaTarea(models.Model):
 
 
 class Tarea(models.Model):
+    titulo = models.CharField(_(u'Titulo'),max_length=200,default='')
     def __unicode__(self):
         return self.nombre
 
