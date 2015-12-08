@@ -15,11 +15,6 @@ class Persona(models.Model):
         return self.name
 
 
-class HistoriaUsuario(models.Model):
-    def __unicode__(self):
-        return self.nombre
-
-
 class HistoriaTarea(models.Model):
     def __unicode__(self):
         return self.nombre
@@ -101,5 +96,20 @@ class CriterioAceptacion(models.Model):
     miembro = models.ForeignKey(Miembro)
     tarea = models.ForeignKey(Tarea)
 
+    def __unicode__(self):
+        return self.nombre
+
+
+class HistoriaUsuario(models.Model):
+    numeroHistoria = models.IntegerField(_(u'Nro. Historia'), default=0)
+    fechaElaboracion = models.DateTimeField(_(u'Fecha elaboracion'), default=datetime.now(),editable=False)
+    personaElaboro = models.CharField(_(u'Elaborado por'), max_length=200,default='')
+    titulo = models.TextField(_(u'Titulo'), default='')
+    descripcion = models.TextField(_(u'Descripcion'), default='')
+    prioridad = models.IntegerField(_(u'Prioridad'), default=0)
+    tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=0)
+    persona = models.ForeignKey(Persona)
+    tareas = models.ForeignKey(Tarea)
+    documentos = models.ForeignKey(Documento)
     def __unicode__(self):
         return self.nombre
