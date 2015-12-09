@@ -32,13 +32,11 @@ class Tarea(models.Model):
 
 
 class Rol(models.Model):
+    nombre = models.CharField(max_length=30)
+    descripcion = models.CharField(max_length=250)
     def __unicode__(self):
         return self.nombre
 
-
-class CriterioAceptacion(models.Model):
-    def __unicode__(self):
-        return self.nombre
 
 
 
@@ -51,7 +49,6 @@ class Estado(models.Model):
     def __unicode__(self):
         return self.nombre
 
-
 class Proyecto(models.Model):
     nombre = models.CharField(_(u'Proyecto'), max_length=250)
     descripcion = models.CharField(_(u'Descripción'), max_length=250)
@@ -59,12 +56,25 @@ class Proyecto(models.Model):
     def __unicode__(self):
         return self.nombre
 
+
 class Miembro(models.Model):
+    rol = models.ForeignKey(Rol)
     persona = models.ForeignKey(Persona)
     proyecto = models.ForeignKey(Proyecto)
 
     def __unicode__(self):
         return self.nombre
+
+
+class CriterioAceptacion(models.Model):
+    resumen = models.CharField(max_length=30)
+    descripcion = models.CharField(max_length=250)
+    miembro = models.ForeignKey(Miembro)
+    tarea = models.ForeignKey(Tarea)
+    def __unicode__(self):
+        return self.nombre
+
+
 
 
 class Documento(models.Model):
