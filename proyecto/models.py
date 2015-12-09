@@ -1,7 +1,17 @@
-from django.db                import models
-from django.utils.translation import ugettext_lazy as _
-from django.core.validators   import RegexValidator
-from datetime                 import datetime
+from django.db                  import models
+#from django.http                import HttpRequest
+from django.utils.translation   import ugettext_lazy as _
+from django.core.validators     import RegexValidator
+from django.contrib.auth.models import User
+from datetime                   import datetime
+
+class Persona(models.Model):
+    def personaDefault(self,request):
+        return request.user
+    # This field is required.
+    user = models.OneToOneField(User, default=personaDefault)
+    def __unicode__(self):
+        return self.name
 
 
 class HistoriaUsuario(models.Model):
@@ -52,11 +62,6 @@ class Proyecto(models.Model):
     def __unicode__(self):
         return self.nombre
 
-class Persona(models.Model):
-    nombre = models.CharField(_(u'Miembro'), max_length=250)
-
-    def __unicode__(self):
-        return self.nombre
 
 
 class Miembro(models.Model):
