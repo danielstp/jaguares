@@ -40,10 +40,6 @@ class CriterioAceptacion(models.Model):
         return self.nombre
 
 
-class Sprint(models.Model):
-    def __unicode__(self):
-        return self.nombre
-
 
 class EstadoEmocional(models.Model):
     def __unicode__(self):
@@ -59,10 +55,8 @@ class Proyecto(models.Model):
     nombre = models.CharField(_(u'Proyecto'), max_length=250)
     descripcion = models.CharField(_(u'Descripción'), max_length=250)
     creado = models.DateTimeField(default=datetime.now(), editable=False)
-
     def __unicode__(self):
         return self.nombre
-
 
 class Miembro(models.Model):
     persona = models.ForeignKey(Persona)
@@ -81,4 +75,19 @@ class Documento(models.Model):
 
     def __unicode__(self):
         return self.nombre
+
+
+
+class Sprint(models.Model):
+    proyecto = models.ForeignKey(Proyecto)
+    inicio = models.DateTimeField(default=datetime.now())
+    fin = models.DateTimeField(default=datetime.now())
+    duracion = models.DurationField()
+    comentarios = models.CharField(max_length=250) 
+    adjunto = models.ForeignKey(Documento)
+    def __unicode__(self):
+        return self.nombre
+
+
+
 
