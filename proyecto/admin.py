@@ -13,9 +13,14 @@ from proyecto.models import Sprint
 from proyecto.models import EstadoEmocional
 from proyecto.models import Estado
 
+class SprintInline(admin.TabularInline):
+    model = Sprint
+
+class ProyectoAdmin(admin.ModelAdmin):
+    inlines = [SprintInline,]
 
 admin.site.register(Documento)
-admin.site.register(Proyecto)
+admin.site.register(Proyecto, ProyectoAdmin)
 admin.site.register(Miembro)
 admin.site.register(Persona)
 admin.site.register(HistoriaUsuario)
