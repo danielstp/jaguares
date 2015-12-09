@@ -1,15 +1,16 @@
 from django.db                  import models
-#from django.http                import HttpRequest
 from django.utils.translation   import ugettext_lazy as _
 from django.core.validators     import RegexValidator
 from django.contrib.auth.models import User
 from datetime                   import datetime
 
+
 class Persona(models.Model):
-    def personaDefault(self,request):
+    def personaDefault(request):
         return request.user
     # This field is required.
     user = models.OneToOneField(User, default=personaDefault)
+
     def __unicode__(self):
         return self.name
 
@@ -63,20 +64,21 @@ class Proyecto(models.Model):
         return self.nombre
 
 
-
 class Miembro(models.Model):
     persona = models.ForeignKey(Persona)
     proyecto = models.ForeignKey(Proyecto)
+
     def __unicode__(self):
         return self.nombre
 
 
 class Documento(models.Model):
-   nombre      = models.CharField(_(u'Nombre'), max_length=250)
-   descripcion = models.CharField(_(u'Descripción'), max_length=250)
-   creado      = models.DateTimeField(auto_now=True, editable=False)
-   archivo     = models.FileField(upload_to=u'Documentos')
-   dueno       = models.ForeignKey(Miembro)
-   def __unicode__(self):
-     return self.nombre
+    nombre =      models.CharField(_(u'Nombre'), max_length=250)
+    descripcion = models.CharField(_(u'Descripción'), max_length=250)
+    creado =      models.DateTimeField(auto_now=True, editable=False)
+    archivo =     models.FileField(upload_to=u'Documentos')
+    dueno =       models.ForeignKey(Miembro)
+
+    def __unicode__(self):
+        return self.nombre
 
