@@ -1,6 +1,8 @@
 from django.contrib import admin
+from nested_inlines.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 
 from proyecto.models import Documento
+from proyecto.models import DocumentoSprint
 from proyecto.models import Proyecto
 from proyecto.models import Miembro
 from proyecto.models import Persona
@@ -13,11 +15,18 @@ from proyecto.models import Sprint
 from proyecto.models import EstadoEmocional
 from proyecto.models import Estado
 
-class SprintInline(admin.TabularInline):
-    model = Sprint
+class DocumentoSprintInline(NestedStackedInline):
+    model = DocumentoSprint
 
-class ProyectoAdmin(admin.ModelAdmin):
-    inlines = [SprintInline,]
+class SprintInline(NestedStackedInline):
+    model = Sprint
+    inlines = [DocumentoSprintInline]
+
+
+class ProyectoAdmin(NestedStackedInline):
+    model = Proyecto
+    inlines = [SprintInline]
+
 
 admin.site.register(Documento)
 admin.site.register(Proyecto, ProyectoAdmin)
@@ -28,6 +37,6 @@ admin.site.register(HistoriaTarea)
 admin.site.register(Tarea)
 admin.site.register(Rol)
 admin.site.register(CriterioAceptacion)
-admin.site.register(Sprint)
+admin.site.register(Sprint, SprintAdmin)
 admin.site.register(EstadoEmocional)
 admin.site.register(Estado)

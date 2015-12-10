@@ -88,7 +88,7 @@ class Sprint(models.Model):
     inicio = models.DateTimeField(default=datetime.now())
     fin = models.DateTimeField(default=datetime.now())
     duracion = models.DurationField()
-    adjunto = models.ForeignKey(Documento)
+    comentarios = models.CharField(max_length=250) 
 
     def __unicode__(self):
         return self.nombre
@@ -98,7 +98,6 @@ class ComentarioSprint(Comentario):
 
 class DocumentoSprint(Documento):
     sprintRef = models.ForeignKey(Sprint)
-
     def __unicode__(self):
         return self.nombre
 
