@@ -25,15 +25,11 @@ class HistoriaTarea(models.Model):
         return self.nombre
 
 
-
-
 class Rol(models.Model):
     nombre = models.CharField(max_length=30)
     descripcion = models.CharField(max_length=250)
     def __unicode__(self):
         return self.nombre
-
-
 
 
 class EstadoEmocional(models.Model):
@@ -44,6 +40,7 @@ class EstadoEmocional(models.Model):
 class Estado(models.Model):
     def __unicode__(self):
         return self.nombre
+
 
 class Proyecto(models.Model):
     nombre = models.CharField(_(u'Proyecto'), max_length=250)
@@ -62,17 +59,6 @@ class Miembro(models.Model):
         return self.nombre
 
 
-class CriterioAceptacion(models.Model):
-    resumen = models.CharField(max_length=30)
-    descripcion = models.CharField(max_length=250)
-    miembro = models.ForeignKey(Miembro)
-    tarea = models.ForeignKey(Tarea)
-    def __unicode__(self):
-        return self.nombre
-
-
-
-
 class Documento(models.Model):
     nombre =      models.CharField(_(u'Nombre'), max_length=250)
     descripcion = models.CharField(_(u'Descripción'), max_length=250)
@@ -84,7 +70,6 @@ class Documento(models.Model):
         return self.nombre
 
 
-
 class Sprint(models.Model):
     proyecto = models.ForeignKey(Proyecto)
     inicio = models.DateTimeField(default=datetime.now())
@@ -92,8 +77,10 @@ class Sprint(models.Model):
     duracion = models.DurationField()
     comentarios = models.CharField(max_length=250) 
     adjunto = models.ForeignKey(Documento)
+
     def __unicode__(self):
         return self.nombre
+
 
 class Tarea(models.Model):
     titulo = models.CharField(_(u'Titulo'),max_length=200,default='')
@@ -103,8 +90,16 @@ class Tarea(models.Model):
     documento = models.ForeignKey(Documento)
     miembro = models.ForeignKey(Miembro)
     estado = models.ForeignKey(Estado)
+
     def __unicode__(self):
         return self.nombre
 
 
+class CriterioAceptacion(models.Model):
+    resumen = models.CharField(max_length=30)
+    descripcion = models.CharField(max_length=250)
+    miembro = models.ForeignKey(Miembro)
+    tarea = models.ForeignKey(Tarea)
 
+    def __unicode__(self):
+        return self.nombre
