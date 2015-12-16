@@ -102,7 +102,6 @@ class DocumentoSprint(Documento):
         return self.nombre
 
 
-
 class DocumentoProyecto(Documento):
     proyecto = models.ForeignKey(Proyecto)
 
@@ -111,6 +110,7 @@ class DocumentoProyecto(Documento):
     
     class Meta:
         verbose_name_plural = _(u'Criterios de Aceptacion')
+
 
 class HistoriaUsuario(models.Model):
     numeroHistoria = models.IntegerField(_(u'Nro. Historia'), default=0)
@@ -143,6 +143,11 @@ class Tarea(models.Model):
 
     def __unicode__(self):
         return self.nombre
+
+class ComentarioTarea(Comentario):
+    tarea = models.ForeignKey(Tarea)
+
+
 
 class ComentarioTarea(Comentario):
     tarea = models.ForeignKey(Tarea)

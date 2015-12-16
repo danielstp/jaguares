@@ -3,6 +3,9 @@ from nested_inlines.admin import NestedModelAdmin, NestedStackedInline, NestedTa
 
 from proyecto.models import Documento
 from proyecto.models import DocumentoSprint
+from proyecto.models import ComentarioTarea
+from proyecto.models import ComentarioProyecto
+from proyecto.models import ComentarioSprint
 from proyecto.models import Proyecto
 from proyecto.models import Miembro
 from proyecto.models import Persona
@@ -26,6 +29,21 @@ class SprintInline(NestedStackedInline):
 class ProyectoAdmin(NestedStackedInline):
     model = Proyecto
     inlines = [SprintInline]
+
+class ComentarioSprintInline(admin.TabularInline):
+    model = ComentarioSprint
+
+
+class ComentarioProyectoInline(admin.TabularInline):
+    model = ComentarioProyecto
+
+
+class ComentarioTareaInline(admin.TabularInline):
+    model = ComentarioTarea
+
+
+class ProyectoAdmin(admin.ModelAdmin):
+    inlines = [SprintInline, ComentarioProyectoInline]
 
 
 admin.site.register(Documento)
