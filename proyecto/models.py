@@ -14,7 +14,6 @@ class Persona(models.Model):
     def __unicode__(self):
         return self.name
 
-
 class HistoriaTarea(models.Model):
     def __unicode__(self):
         return self.nombre
@@ -25,12 +24,15 @@ class Rol(models.Model):
     descripcion = models.CharField(max_length=250)
     def __unicode__(self):
         return self.nombre
-
+    class Meta:
+        verbose_name_plural= _(u'Roles')
 
 class EstadoEmocional(models.Model):
     def __unicode__(self):
         return self.nombre
-
+    
+    class Meta:
+        verbose_name_plural = _(u'Estados Emocionales')
 
 class Estado(models.Model):
     def __unicode__(self):
@@ -100,7 +102,9 @@ class CriterioAceptacion(models.Model):
 
     def __unicode__(self):
         return self.nombre
-
+    
+    class Meta:
+        verbose_name_plural = _(u'Criterios de Aceptacion')
 
 class HistoriaUsuario(models.Model):
     numeroHistoria = models.IntegerField(_(u'Nro. Historia'), default=0)
@@ -115,3 +119,6 @@ class HistoriaUsuario(models.Model):
     documentos = models.ForeignKey(Documento)
     def __unicode__(self):
         return self.nombre
+    class Meta:
+        verbose_name_plural = _(u'Historias de Usuario')
+    
