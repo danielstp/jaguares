@@ -28,6 +28,8 @@ class Rol(models.Model):
         verbose_name_plural= _(u'Roles')
 
 class EstadoEmocional(models.Model):
+    nombre = models.CharField(_(u'Estado'), max_length=30, default='')
+    descripcion = models.CharField(_(u'Descripcion'), max_length=250, default='')
     def __unicode__(self):
         return self.nombre
     
