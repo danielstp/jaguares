@@ -14,9 +14,6 @@ class Persona(models.Model):
     def __unicode__(self):
         return self.name
 
-class HistoriaTarea(models.Model):
-    def __unicode__(self):
-        return self.nombre
 
 
 class Rol(models.Model):
@@ -85,24 +82,15 @@ class Sprint(models.Model):
         return self.nombre
 
 
-class Tarea(models.Model):
-    titulo = models.CharField(_(u'Titulo'),max_length=200,default='')
-    descripcion = models.TextField(_(u'Descripcion'),default='')
-    tiempoInicioEstimado = models.DateTimeField(_(u'Fecha de Inicio (Estimado)'), default=datetime.now(), editable=True)
-    tiempoFinalizacionEstimado = models.DateTimeField(_(u'Fecha de finalizacion (Estimado)'), default=datetime.now(), editable=True)
-    documento = models.ForeignKey(Documento)
-    miembro = models.ForeignKey(Miembro)
-    estado = models.ForeignKey(Estado)
+class DocumentoSprint(Documento):
+    sprintRef = models.ForeignKey(Sprint)
 
     def __unicode__(self):
         return self.nombre
 
 
-class CriterioAceptacion(models.Model):
-    resumen = models.CharField(max_length=30)
-    descripcion = models.CharField(max_length=250)
-    miembro = models.ForeignKey(Miembro)
-    tarea = models.ForeignKey(Tarea)
+class DocumentoProyecto(Documento):
+    proyecto = models.ForeignKey(Proyecto)
 
     def __unicode__(self):
         return self.nombre
@@ -117,12 +105,47 @@ class HistoriaUsuario(models.Model):
     titulo = models.TextField(_(u'Titulo'), default='')
     descripcion = models.TextField(_(u'Descripcion'), default='')
     prioridad = models.IntegerField(_(u'Prioridad'), default=0)
-    tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=0)
+    tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=2)
     persona = models.ForeignKey(Persona)
-    tareas = models.ForeignKey(Tarea)
     documentos = models.ForeignKey(Documento)
+
     def __unicode__(self):
         return self.nombre
+
     class Meta:
         verbose_name_plural = _(u'Historias de Usuario')
-    
+
+
+class Tarea(models.Model):
+    titulo = models.CharField(_(u'Titulo'),max_length=200,default='')
+    descripcion = models.TextField(_(u'Descripcion'),default='')
+    tiempoInicioEstimado = models.DateTimeField(_(u'Fecha de Inicio (Estimado)'), default=datetime.now())
+    tiempoFinalizacionEstimado = models.DateTimeField(_(u'Fecha de finalizacion (Estimado)'), default=datetime.now())
+    progreso = models.DecimalField('Progreso (de 0 a 100))',default=0,max_digits=10,decimal_places=2)
+    documento = models.ForeignKey(Documento)
+    miembro = models.ForeignKey(Miembro)
+    estado = models.ForeignKey(Estado)
+    historiaUs = models.ForeignKey(HistoriaUsuario)
+
+    def __unicode__(self):
+        return self.nombre
+
+
+class HistoriaTarea(models.Model):
+    progreso = models.DecimalField(('Progreso'),max_digits=10,decimal_places=2)
+    fecha = models.DateTimeField(('Fecha'),default=datetime.now(),editable=False)
+    comentarios = models.TextField(default='')
+    tarea = models.ForeignKey(Tarea)
+    def __unicode__(self):
+        return self.nombre
+
+
+class CriterioAceptacion(models.Model):
+    resumen = models.CharField(max_length=30)
+    descripcion = models.CharField(max_length=250)
+    miembro = models.ForeignKey(Miembro)
+    tarea = models.ForeignKey(Tarea)
+
+    def __unicode__(self):
+        return self.nombre
+
