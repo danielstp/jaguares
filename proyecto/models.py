@@ -8,6 +8,7 @@ from datetime                   import datetime
 class Comentario(models.Model):
     resumen = models.CharField(max_length=100)
     comentario = models.TextField()
+    fecha = models.DateTimeField(_(u'Fecha inicio'), default=datetime.now(), editable=False)
 
     def __str__(self):
         return self.resumen
@@ -22,6 +23,10 @@ class Persona(models.Model):
     def __unicode__(self):
         return self.name
 
+
+class HistoriaTarea(models.Model):
+    def __unicode__(self):
+        return self.nombre
 
 
 class Rol(models.Model):
@@ -57,6 +62,10 @@ class Proyecto(models.Model):
         return self.nombre
 
 
+class ComentarioProyecto(Comentario):
+    proyecto = models.ForeignKey(Proyecto)
+
+
 class Miembro(models.Model):
     rol = models.ForeignKey(Rol)
     persona = models.ForeignKey(Persona)
@@ -71,7 +80,7 @@ class Documento(models.Model):
     descripcion = models.CharField(_(u'Descripción'), max_length=250)
     creado =      models.DateTimeField(auto_now=True, editable=False)
     archivo =     models.FileField(upload_to=u'Documentos')
-    dueno =       models.ForeignKey(Miembro)
+    dueño =       models.ForeignKey(Miembro)
 
     def __unicode__(self):
         return self.nombre
@@ -88,12 +97,17 @@ class Sprint(models.Model):
     def __unicode__(self):
         return self.nombre
 
+class ComentarioSprint(Comentario):
+    sprint = models.ForeignKey(Sprint)
 
 class DocumentoSprint(Documento):
     sprintRef = models.ForeignKey(Sprint)
 
     def __unicode__(self):
         return self.nombre
+
+class ComentarioTarea(Comentario):
+    tarea = models.ForeignKey(Tarea)
 
 
 class DocumentoProyecto(Documento):
