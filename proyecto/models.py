@@ -148,12 +148,6 @@ class ComentarioTarea(Comentario):
     tarea = models.ForeignKey(Tarea)
 
 
-
-class ComentarioTarea(Comentario):
-    tarea = models.ForeignKey(Tarea)
-
-
-
 class HistoriaTarea(models.Model):
     progreso = models.DecimalField(('Progreso'),max_digits=10,decimal_places=2)
     fecha = models.DateTimeField(('Fecha'),default=datetime.now(),editable=False)

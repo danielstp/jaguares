@@ -45,6 +45,8 @@ class ComentarioTareaInline(admin.TabularInline):
 class ProyectoAdmin(admin.ModelAdmin):
     inlines = [SprintInline, ComentarioProyectoInline]
 
+class SprintAdmin(admin.ModelAdmin):
+    inlines = [ComentarioSprintInline,]
 
 admin.site.register(Documento)
 admin.site.register(Proyecto, ProyectoAdmin)
