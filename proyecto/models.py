@@ -87,9 +87,16 @@ class Sprint(models.Model):
     descripcion = models.TextField(_(u'Descripcion'), default='')
     inicio = models.DateTimeField(default=datetime.now())
     fin = models.DateTimeField(default=datetime.now())
-    duracion = models.DurationField()
-    comentarios = models.CharField(max_length=250) 
-
+    
+    def _get_duracion(self):
+        return (self.fin - self.inicio).days
+    
+    duracion = property(_get_duracion)
+    adjunto = models.ForeignKey(Documento, null=True, blank=True)
+    
+    def __str__(self):
+        return ((self.descripcion + ' (%d dias)') % self.duracion)
+    
     def __unicode__(self):
         return self.nombre
 
