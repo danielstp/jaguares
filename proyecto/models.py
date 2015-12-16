@@ -5,6 +5,14 @@ from django.contrib.auth.models import User
 from datetime                   import datetime
 
 
+class Comentario(models.Model):
+    resumen = models.CharField(max_length=100)
+    comentario = models.TextField()
+
+    def __str__(self):
+        return self.resumen
+
+
 class Persona(models.Model):
     def personaDefault(request):
         return request.user
@@ -75,7 +83,6 @@ class Sprint(models.Model):
     inicio = models.DateTimeField(default=datetime.now())
     fin = models.DateTimeField(default=datetime.now())
     duracion = models.DurationField()
-    comentarios = models.CharField(max_length=250) 
     adjunto = models.ForeignKey(Documento)
 
     def __unicode__(self):
