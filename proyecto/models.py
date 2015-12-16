@@ -58,6 +58,7 @@ class Proyecto(models.Model):
     descripcion = models.CharField(_(u'Descripción'), max_length=250)
     creado = models.DateTimeField(default=datetime.now(), editable=False)
     fechaInicio = models.DateTimeField(_(u'Fecha inicio'), default=datetime.now(), editable=True)
+    duracion = models.DurationField(_(u'Duracion (Dias hh:mm:ss)'))
     def __unicode__(self):
         return self.nombre
 
