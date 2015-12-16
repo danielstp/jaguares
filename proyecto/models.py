@@ -24,11 +24,6 @@ class Persona(models.Model):
         return self.name
 
 
-class HistoriaTarea(models.Model):
-    def __unicode__(self):
-        return self.nombre
-
-
 class Rol(models.Model):
     nombre = models.CharField(max_length=30)
     descripcion = models.CharField(max_length=250)
@@ -107,8 +102,6 @@ class DocumentoSprint(Documento):
     def __unicode__(self):
         return self.nombre
 
-class ComentarioTarea(Comentario):
-    tarea = models.ForeignKey(Tarea)
 
 
 class DocumentoProyecto(Documento):
@@ -151,6 +144,10 @@ class Tarea(models.Model):
 
     def __unicode__(self):
         return self.nombre
+
+class ComentarioTarea(Comentario):
+    tarea = models.ForeignKey(Tarea)
+
 
 
 class HistoriaTarea(models.Model):
