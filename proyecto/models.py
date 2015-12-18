@@ -96,9 +96,7 @@ class Sprint(models.Model):
     
     def __str__(self):
         return ((self.descripcion + ' (%d dias)') % self.duracion)
-    
-    def __unicode__(self):
-        return self.nombre
+
 
 class ComentarioSprint(Comentario):
     sprint = models.ForeignKey(Sprint)
@@ -116,7 +114,7 @@ class DocumentoProyecto(Documento):
         return self.nombre
     
     class Meta:
-        verbose_name_plural = _(u'Criterios de Aceptacion')
+        verbose_name_plural = _(u'Documentos adjuntos Proyecto')
 
 
 class HistoriaUsuario(models.Model):
@@ -173,3 +171,5 @@ class CriterioAceptacion(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    class Meta:
+          verbose_name_plural = _(u'Criterios de aceptacion')
