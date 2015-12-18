@@ -3,6 +3,7 @@ from nested_inlines.admin import NestedModelAdmin, NestedStackedInline, NestedTa
 
 from proyecto.models import Documento
 from proyecto.models import DocumentoSprint
+from proyecto.models import DocumentoProyecto
 from proyecto.models import ComentarioTarea
 from proyecto.models import ComentarioProyecto
 from proyecto.models import ComentarioSprint
@@ -20,6 +21,9 @@ from proyecto.models import Estado
 
 class DocumentoSprintInline(NestedStackedInline):
     model = DocumentoSprint
+
+class DocumentoProyectoInline(NestedStackedInline):
+    model = DocumentoProyecto
 
 class SprintInline(NestedStackedInline):
     model = Sprint
@@ -43,7 +47,7 @@ class ComentarioTareaInline(admin.TabularInline):
 
 
 class ProyectoAdmin(admin.ModelAdmin):
-    inlines = [SprintInline, ComentarioProyectoInline]
+    inlines = [SprintInline, DocumentoProyectoInline, ComentarioProyectoInline]
 
 class SprintAdmin(admin.ModelAdmin):
     inlines = [ComentarioSprintInline,]
