@@ -30,3 +30,30 @@ Experimento de Django + Angular
 ### H3
 - descripcion
 - 
+###Help Commands
+source ~/django/bin/activate
+deploy:
+./manage.py runserver
+
+para migrations data base:
+mc (cm total comander)
+./manage.py makemigrations
+./manage.py migrate
+
+./manage.py createsuperuser
+
+borrar db
+rm 
+
+
+en caso de borrar todo excepto .git
+git reset --hard HEAD
+//crear la base de datos
+ ./manage.py/
+
+sino:
+git clone https://github.com/danielstp/jaguares.git
+
+
+instaladores
+pip install -r Requiriments.txt
