@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "nombre": "Backlog",
-    "descripcion": "Estado Inicial"
+    "descripción": "Estado Inicial"
   }
 },
 {
@@ -12,7 +12,7 @@
   "pk": 2,
   "fields": {
     "nombre": "Done",
-    "descripcion": "Terminado"
+    "descripción": "Terminado"
   }
 },
 {
@@ -20,7 +20,7 @@
   "pk": 3,
   "fields": {
     "nombre": "TODO",
-    "descripcion": "Por hacer"
+    "descripción": "Por hacer"
   }
 },
 {
@@ -28,7 +28,7 @@
   "pk": 4,
   "fields": {
     "nombre": "In Process",
-    "descripcion": "Trabajando en esto"
+    "descripción": "Trabajando en esto"
   }
 }
 ]

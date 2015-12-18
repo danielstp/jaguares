@@ -26,7 +26,7 @@ class Persona(models.Model):
 
 class Rol(models.Model):
     nombre = models.CharField(max_length=30)
-    descripcion = models.CharField(max_length=250)
+    descripción = models.CharField(max_length=250)
     def __str__(self):
         return self.nombre
     class Meta:
@@ -34,7 +34,7 @@ class Rol(models.Model):
 
 class EstadoEmocional(models.Model):
     nombre = models.CharField(_(u'Estado Emocional'), max_length=30, default='')
-    descripcion = models.CharField(_(u'Descripcion'), max_length=250, default='')
+    descripción = models.CharField(_(u'descripción'), max_length=250, default='')
     def __str__(self):
         return self.nombre
     
@@ -43,7 +43,7 @@ class EstadoEmocional(models.Model):
 
 class Estado(models.Model):
     nombre = models.CharField(_(u'Estado'), max_length=30, default='')
-    descripcion = models.CharField(_(u'Descripcion'), max_length=250, default='')
+    descripción = models.CharField(_(u'descripción'), max_length=250, default='')
 
     def __str__(self):
         return self.nombre
@@ -51,10 +51,10 @@ class Estado(models.Model):
 
 class Proyecto(models.Model):
     nombre = models.CharField(_(u'Proyecto'), max_length=250)
-    descripcion = models.CharField(_(u'Descripción'), max_length=250)
+    descripción = models.CharField(_(u'Descripción'), max_length=250)
     creado = models.DateTimeField(default=datetime.now(), editable=False)
     fechaInicio = models.DateTimeField(_(u'Fecha inicio'), default=datetime.now(), editable=True)
-    duracion = models.DurationField(_(u'Duracion (Dias hh:mm:ss)'))
+    duración = models.DurationField(_(u'Duración (Dias hh:mm:ss)'))
     def __str__(self):
         return self.nombre
 
@@ -74,7 +74,7 @@ class Miembro(models.Model):
 
 class Documento(models.Model):
     nombre =      models.CharField(_(u'Nombre'), max_length=250)
-    descripcion = models.CharField(_(u'Descripción'), max_length=250)
+    descripción = models.CharField(_(u'Descripción'), max_length=250)
     creado =      models.DateTimeField(auto_now=True, editable=False)
     archivo =     models.FileField(upload_to=u'Documentos')
     dueño =       models.ForeignKey(Miembro)
@@ -85,18 +85,18 @@ class Documento(models.Model):
 
 class Sprint(models.Model):
     proyecto = models.ForeignKey(Proyecto)
-    descripcion = models.TextField(_(u'Descripcion'), default='')
+    descripción = models.TextField(_(u'descripción'), default='')
     inicio = models.DateTimeField(default=datetime.now())
     fin = models.DateTimeField(default=datetime.now())
     
-    def _get_duracion(self):
+    def _get_duración(self):
         return (self.fin - self.inicio).days
     
-    duracion = property(_get_duracion)
+    duración = property(_get_duración)
     adjunto = models.ForeignKey(Documento, null=True, blank=True)
     
     def __str__(self):
-        return ((self.descripcion + ' (%d dias)') % self.duracion)
+        return ((self.descripción + ' (%d dias)') % self.duración)
 
 
 class ComentarioSprint(Comentario):
@@ -123,7 +123,7 @@ class HistoriaUsuario(models.Model):
     fechaElaboracion = models.DateTimeField(_(u'Fecha elaboracion'), default=datetime.now(),editable=False)
     personaElaboro = models.CharField(_(u'Elaborado por'), max_length=200,default='')
     titulo = models.TextField(_(u'Titulo'), default='')
-    descripcion = models.TextField(_(u'Descripcion'), default='')
+    descripción = models.TextField(_(u'descripción'), default='')
     prioridad = models.IntegerField(_(u'Prioridad'), default=0)
     tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=2)
     persona = models.ForeignKey(Persona)
@@ -138,7 +138,7 @@ class HistoriaUsuario(models.Model):
 
 class Tarea(models.Model):
     titulo = models.CharField(_(u'Titulo'),max_length=200,default='')
-    descripcion = models.TextField(_(u'Descripcion'),default='')
+    descripción = models.TextField(_(u'descripción'),default='')
     tiempoInicioEstimado = models.DateTimeField(_(u'Fecha de Inicio (Estimado)'), default=datetime.now())
     tiempoFinalizacionEstimado = models.DateTimeField(_(u'Fecha de finalizacion (Estimado)'), default=datetime.now())
     progreso = models.DecimalField('Progreso (de 0 a 100))',default=0,max_digits=10,decimal_places=2)
@@ -165,7 +165,7 @@ class HistoriaTarea(models.Model):
 
 class CriterioAceptacion(models.Model):
     resumen = models.CharField(max_length=30)
-    descripcion = models.CharField(max_length=250)
+    descripción = models.CharField(max_length=250)
     miembro = models.ForeignKey(Miembro)
     tarea = models.ForeignKey(Tarea)
 
