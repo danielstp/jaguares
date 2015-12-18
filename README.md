@@ -31,20 +31,25 @@ Experimento de Django + Angular
 - descripcion
 - 
 ###Help Commands
+django-admin manage.py
+django-admin manage.py server
+
 source ~/django/bin/activate
 deploy:
 ./manage.py runserver
 
 para migrations data base:
 mc (cm total comander)
-./manage.py makemigrations
-./manage.py migrate
 
-./manage.py createsuperuser
+- ./manage.py makemigrations
+- ./manage.py migrate
+-  ./manage.py loaddata datos
 
-borrar db
-rm 
+- ./manage.py createsuperuser
 
+borrar db: rm db.sqlte3
+borrar migrations:
+proyectos/migrations: rm 0001/initial.py....etc
 
 en caso de borrar todo excepto .git
 git reset --hard HEAD
@@ -57,3 +62,8 @@ git clone https://github.com/danielstp/jaguares.git
 
 instaladores
 pip install -r Requiriments.txt
+
+borrar db: rm db.sqlte3
+borrar migrations:
+proyrctos/migrations: rm 0001/initial.py....etc
+
