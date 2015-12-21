@@ -24,7 +24,7 @@ class Persona(models.Model):
     user = models.OneToOneField(User, default=getUser, primary_key=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.user.get_username()
 
 
 class Rol(models.Model):
@@ -111,18 +111,14 @@ class Sprint(models.Model):
 class ComentarioSprint(Comentario):
     sprint = models.ForeignKey(Sprint)
 
+
 class DocumentoSprint(Documento):
     sprintRef = models.ForeignKey(Sprint)
-    def __str__(self):
-        return self.nombre
 
 
 class DocumentoProyecto(Documento):
     proyecto = models.ForeignKey(Proyecto)
 
-    def __str__(self):
-        return self.nombre
-    
     class Meta:
         verbose_name_plural = _(u'Documentos adjuntos Proyecto')
 
@@ -139,7 +135,7 @@ class HistoriaUsuario(models.Model):
     documentos = models.ForeignKey(Documento)
 
     def __str__(self):
-        return self.nombre
+        return self.titulo
 
     class Meta:
         verbose_name_plural = _(u'Historias de Usuario')
@@ -157,7 +153,7 @@ class Tarea(models.Model):
     historiaUs = models.ForeignKey(HistoriaUsuario)
 
     def __str__(self):
-        return self.nombre
+        return self.titulo
 
 class ComentarioTarea(Comentario):
     tarea = models.ForeignKey(Tarea)
@@ -169,7 +165,7 @@ class HistoriaTarea(models.Model):
     comentarios = models.TextField(default='')
     tarea = models.ForeignKey(Tarea)
     def __str__(self):
-        return self.nombre
+        return self.tarea.titulo + self.progreso
 
 
 class CriterioAceptacion(models.Model):
@@ -179,7 +175,7 @@ class CriterioAceptacion(models.Model):
     tarea = models.ForeignKey(Tarea)
 
     def __str__(self):
-        return self.nombre
+        return self.resumen
 
     class Meta:
           verbose_name_plural = _(u'Criterios de aceptación')
