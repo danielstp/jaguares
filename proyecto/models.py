@@ -15,10 +15,13 @@ class Comentario(models.Model):
 
 
 class Persona(models.Model):
-    def personaDefault(request):
-        return request.user
+    @classmethod
+    def getUser(cls, request):
+        user = getattr(request, "user", None)
+        return Persona._default_manager.get(user=user)
+
     # This field is required.
-    user = models.OneToOneField(User, default=personaDefault)
+    user = models.OneToOneField(User, default=getUser, primary_key=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -41,7 +44,7 @@ class EstadoEmocional(models.Model):
 
     def __str__(self):
         return self.nombre
-    
+
     class Meta:
         verbose_name_plural = _(u'Estados Emocionales')
 
