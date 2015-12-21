@@ -7,7 +7,7 @@ Experimento de Django + Angular
 - Python
 
 
-## Historia de Usuario Inicial
+## Historias de Usuario
 
 - Como administrador de proyecto me gustaria poder crear un proyecto con Sprints tal que pueda registar el inicio, duración, comentarios y documentos adjuntos
 - Como administrador de proyecto me gustaria crear Tareas para cumplir las historias de usuario dentro del sprint
@@ -28,5 +28,5 @@ Experimento de Django + Angular
 - Debo poder modificar una tarea para actualizar la fecha estimada de finalización
 
 ### H3
-- descripcion
+- descripción
 - 

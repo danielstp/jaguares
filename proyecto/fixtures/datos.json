@@ -1,0 +1,34 @@
+[
+{
+  "model": "proyecto.estado",
+  "pk": 1,
+  "fields": {
+    "nombre": "Backlog",
+    "descripcion": "Estado Inicial"
+  }
+},
+{
+  "model": "proyecto.estado",
+  "pk": 2,
+  "fields": {
+    "nombre": "Done",
+    "descripcion": "Terminado"
+  }
+},
+{
+  "model": "proyecto.estado",
+  "pk": 3,
+  "fields": {
+    "nombre": "TODO",
+    "descripcion": "Por hacer"
+  }
+},
+{
+  "model": "proyecto.estado",
+  "pk": 4,
+  "fields": {
+    "nombre": "In Process",
+    "descripcion": "Trabajando en esto"
+  }
+}
+]

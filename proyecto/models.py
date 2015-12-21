@@ -20,14 +20,14 @@ class Persona(models.Model):
     # This field is required.
     user = models.OneToOneField(User, default=personaDefault)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
 class Rol(models.Model):
     nombre = models.CharField(max_length=30)
     descripcion = models.CharField(max_length=250)
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
     class Meta:
         verbose_name_plural= _(u'Roles')
@@ -35,7 +35,7 @@ class Rol(models.Model):
 class EstadoEmocional(models.Model):
     nombre = models.CharField(_(u'Estado Emocional'), max_length=30, default='')
     descripcion = models.CharField(_(u'Descripcion'), max_length=250, default='')
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
     
     class Meta:
@@ -44,7 +44,8 @@ class EstadoEmocional(models.Model):
 class Estado(models.Model):
     nombre = models.CharField(_(u'Estado'), max_length=30, default='')
     descripcion = models.CharField(_(u'Descripcion'), max_length=250, default='')
-    def __unicode__(self):
+
+    def __str__(self):
         return self.nombre
 
 
@@ -54,7 +55,7 @@ class Proyecto(models.Model):
     creado = models.DateTimeField(default=datetime.now(), editable=False)
     fechaInicio = models.DateTimeField(_(u'Fecha inicio'), default=datetime.now(), editable=True)
     duracion = models.DurationField(_(u'Duracion (Dias hh:mm:ss)'))
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
 
@@ -67,7 +68,7 @@ class Miembro(models.Model):
     persona = models.ForeignKey(Persona)
     proyecto = models.ForeignKey(Proyecto)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
 
@@ -78,7 +79,7 @@ class Documento(models.Model):
     archivo =     models.FileField(upload_to=u'Documentos')
     dueño =       models.ForeignKey(Miembro)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
 
@@ -96,27 +97,25 @@ class Sprint(models.Model):
     
     def __str__(self):
         return ((self.descripcion + ' (%d dias)') % self.duracion)
-    
-    def __unicode__(self):
-        return self.nombre
+
 
 class ComentarioSprint(Comentario):
     sprint = models.ForeignKey(Sprint)
 
 class DocumentoSprint(Documento):
     sprintRef = models.ForeignKey(Sprint)
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
 
 class DocumentoProyecto(Documento):
     proyecto = models.ForeignKey(Proyecto)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
     
     class Meta:
-        verbose_name_plural = _(u'Criterios de Aceptacion')
+        verbose_name_plural = _(u'Documentos adjuntos Proyecto')
 
 
 class HistoriaUsuario(models.Model):
@@ -130,7 +129,7 @@ class HistoriaUsuario(models.Model):
     persona = models.ForeignKey(Persona)
     documentos = models.ForeignKey(Documento)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
     class Meta:
@@ -148,7 +147,7 @@ class Tarea(models.Model):
     estado = models.ForeignKey(Estado)
     historiaUs = models.ForeignKey(HistoriaUsuario)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
 class ComentarioTarea(Comentario):
@@ -160,7 +159,7 @@ class HistoriaTarea(models.Model):
     fecha = models.DateTimeField(('Fecha'),default=datetime.now(),editable=False)
     comentarios = models.TextField(default='')
     tarea = models.ForeignKey(Tarea)
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
 
@@ -170,6 +169,8 @@ class CriterioAceptacion(models.Model):
     miembro = models.ForeignKey(Miembro)
     tarea = models.ForeignKey(Tarea)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
+    class Meta:
+          verbose_name_plural = _(u'Criterios de aceptacion')
