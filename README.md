@@ -14,7 +14,9 @@ Experimento de Django + Angular
 2. Como Administrador del proyecto me gustaría crear tareas para cumplir una Historia de Usuario.
 3. Como administrador de proyecto quisiera poder agregar miembros a un equipo de trabajo
 4. Como miembro de un Proyecto me gustaría poder visualizar las tareas en un Tablero de trabajo (ToDo, Doing y Done).
+
 ## Criterios de Aceptación
+
 ### H0
 - Debo poder crear un proyecto con al menos un sprint
 - Debo poder crear un sprint con fecha de inicio
