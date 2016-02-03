@@ -1,4 +1,5 @@
 from django.contrib import admin
+from polymorphic.admin import PolymorphicParentModelAdmin, PolymorphicChildModelAdmin
 from nested_inlines.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 
 from proyecto.models import Documento

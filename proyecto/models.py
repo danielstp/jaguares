@@ -1,11 +1,12 @@
+from __future__ import unicode_literals
 from django.db                  import models
 from django.utils.translation   import ugettext_lazy as _
 from django.core.validators     import RegexValidator
 from django.contrib.auth.models import User
 from datetime                   import datetime
+from polymorphic.models         import PolymorphicModel
 
-
-class Comentario(models.Model):
+class Comentario(PolymorphicModel):
     resumen = models.CharField(max_length=100)
     comentario = models.TextField()
     fecha = models.DateTimeField(_(u'Fecha inicio'), default=datetime.now(), editable=False)
@@ -81,7 +82,7 @@ class Miembro(models.Model):
         return self.nombre
 
 
-class Documento(models.Model):
+class Documento(PolymorphicModel):
     nombre =      models.CharField(_(u'Nombre'), max_length=250)
     descripción = models.CharField(_(u'Descripción'), max_length=250)
     creado =      models.DateTimeField(auto_now=True, editable=False)
@@ -93,6 +94,7 @@ class Documento(models.Model):
 
 
 class Sprint(models.Model):
+    nombre = models.CharField(_(u'Nombre'), max_length=250)
     proyecto = models.ForeignKey(Proyecto)
     descripción = models.TextField(_(u'descripción'), default='')
     inicio = models.DateTimeField(default=datetime.now())
@@ -110,6 +112,8 @@ class Sprint(models.Model):
 
 class ComentarioSprint(Comentario):
     sprint = models.ForeignKey(Sprint)
+    def __str__(self):
+        return self.sprint.nombre
 
 
 class DocumentoSprint(Documento):
@@ -154,6 +158,7 @@ class Tarea(models.Model):
 
     def __str__(self):
         return self.titulo
+
 
 class ComentarioTarea(Comentario):
     tarea = models.ForeignKey(Tarea)
