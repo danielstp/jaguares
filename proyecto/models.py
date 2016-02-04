@@ -170,7 +170,7 @@ class HistoriaUsuarioSprint(models.Model):
         return self.sprint.nombre + " - " + self.historiaUsuario.titulo
 
     class Meta:
-        verbose_name_plural = _(u'Asignar Sprint')
+        verbose_name_plural = _(u'Sprint Backlog')
 
 
 class Tarea(models.Model):

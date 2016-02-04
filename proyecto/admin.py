@@ -90,7 +90,7 @@ class CriterioAceptacionInline(admin.TabularInline):
 class SprintAdmin(admin.ModelAdmin):
     list_display = ('nombre','proyecto')
     list_filter = ['nombre','proyecto']
-    inlines = [ComentarioSprintInline,]
+    inlines = [HistoriaUsuarioSprintInline,ComentarioSprintInline,]
 
 
 class HistoriaUsuarioAdmin(admin.ModelAdmin):
