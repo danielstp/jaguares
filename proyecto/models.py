@@ -123,6 +123,18 @@ class DocumentoProyecto(Documento):
         verbose_name_plural = _(u'Documentos adjuntos Proyecto')
 
 
+class CriterioAceptacion(models.Model):
+    resumen = models.CharField(max_length=30)
+    descripción = models.CharField(max_length=250)
+    autor = models.ForeignKey(Miembro)
+    historiaUsuario = models.ForeignKey(HistoriaUsuario)
+
+    def __str__(self):
+        return self.resumen
+
+    class Meta:
+          verbose_name_plural = _(u'Criterios de aceptación')
+
 class HistoriaUsuario(models.Model):
     numeroHistoria = models.IntegerField(_(u'Nro. Historia'), default=0)
     fechaElaboracion = models.DateTimeField(_(u'Fecha elaboración'), default=datetime.now(),editable=False)
@@ -134,6 +146,7 @@ class HistoriaUsuario(models.Model):
     persona = models.ForeignKey(settings.AUTH_USER_MODEL)
     documentos = models.ForeignKey(Documento, blank=True,null=True)
     proyecto = models.ForeignKey(Proyecto)
+    criteriosAceptacion = models.ForeignKey(CriterioAceptacion)
 
     def __str__(self):
         return self.titulo
@@ -151,7 +164,7 @@ class HistoriaUsuarioSprint(models.Model):
 
 
 class Tarea(models.Model):
-    titulo = models.CharField(_(u'Titulo'),max_length=200,default='')
+    nombre = models.CharField(_(u'Titulo'),max_length=200,default='')
     descripción = models.TextField(_(u'descripción'),default='')
     tiempoInicioEstimado = models.DateTimeField(_(u'Fecha de Inicio (Estimado)'), default=datetime.now())
     tiempoFinalizacionEstimado = models.DateTimeField(_(u'Fecha de finalizacion (Estimado)'), default=datetime.now())
@@ -181,15 +194,3 @@ class HistoriaTarea(models.Model):
     class Meta:
         verbose_name_plural = _(u'Historia de las Tareas')
 
-
-class CriterioAceptacion(models.Model):
-    resumen = models.CharField(max_length=30)
-    descripción = models.CharField(max_length=250)
-    autor = models.ForeignKey(Miembro)
-    historiaUsuario = models.ForeignKey(HistoriaUsuario)
-
-    def __str__(self):
-        return self.resumen
-
-    class Meta:
-          verbose_name_plural = _(u'Criterios de aceptación')
