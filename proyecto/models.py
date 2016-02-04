@@ -106,7 +106,8 @@ class Sprint(models.Model):
     adjunto = models.ForeignKey(Documento, null=True, blank=True)
 
     def __str__(self):
-        return ((self.nombre + ' (%d dias)') % self.duración)
+        return ('Sprint '+ self.nombre) 
+            # + ' (Duracion: %d dias)') % self.duración)
 
 
 class ComentarioSprint(Comentario):
@@ -167,6 +168,9 @@ class HistoriaUsuarioSprint(models.Model):
 
     def __str__(self):
         return self.sprint.nombre + " - " + self.historiaUsuario.titulo
+
+    class Meta:
+        verbose_name_plural = _(u'Asignar Sprint')
 
 
 class Tarea(models.Model):

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from polymorphic.admin import PolymorphicParentModelAdmin, PolymorphicChildModelAdmin
 from nested_inlines.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
+from django.utils.safestring import mark_safe
 
 from .models import Documento
 from .models import DocumentoSprint
@@ -26,6 +27,7 @@ from .models import Prioridad
 class HistoriaUsuarioSprintInline(NestedStackedInline):
     model = HistoriaUsuarioSprint
     extra = 1
+    verbose_name = "Sprint - HU :"
 
 
 class DocumentoSprintInline(NestedStackedInline):
