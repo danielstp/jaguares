@@ -114,6 +114,18 @@ class DocumentoProyecto(Documento):
         verbose_name_plural = _(u'Documentos adjuntos Proyecto')
 
 
+class CriterioAceptacion(models.Model):
+    resumen = models.CharField(max_length=30)
+    descripción = models.CharField(max_length=250)
+    miembro = models.ForeignKey(Miembro)
+
+    def __str__(self):
+        return self.resumen
+
+    class Meta:
+          verbose_name_plural = _(u'Criterios de aceptación')
+
+
 class HistoriaUsuario(models.Model):
     numeroHistoria = models.IntegerField(_(u'Nro. Historia'), default=0)
     fechaElaboracion = models.DateTimeField(_(u'Fecha elaboración'), default=datetime.now(),editable=False)
@@ -126,6 +138,7 @@ class HistoriaUsuario(models.Model):
     documentos = models.ForeignKey(Documento, blank=True,null=True)
     sprint = models.ManyToManyField(Sprint)
     proyecto = models.ForeignKey(Proyecto)
+    criteriosAceptacion = models.ForeignKey(CriterioAceptacion)
 
     def __str__(self):
         return self.titulo
@@ -165,15 +178,3 @@ class HistoriaTarea(models.Model):
     class Meta:
         verbose_name_plural = _(u'Historia de las Tareas')
 
-
-class CriterioAceptacion(models.Model):
-    resumen = models.CharField(max_length=30)
-    descripción = models.CharField(max_length=250)
-    miembro = models.ForeignKey(Miembro)
-    tarea = models.ForeignKey(Tarea)
-
-    def __str__(self):
-        return self.resumen
-
-    class Meta:
-          verbose_name_plural = _(u'Criterios de aceptación')
