@@ -51,32 +51,38 @@ Experimento de Django + Angular
 - Debo poder mover una tarea a las diferentes columnas del Tablero, cambiando el estado de esa tarea.
 
 # Help Commands(Ayuda)
-django-admin manage.py
-django-admin manage.py server
+```bash
 
 source ~/django/bin/activate
-deploy:
+
+django-admin startproject proyecto
+```
+
+##deploy:
+```bash
 ./manage.py runserver
+```
 
+## **crear la base de datos**
 para migrations data base:
-mc (cm total comander)
 
-- ./manage.py makemigrations
-- ./manage.py migrate
-- ./manage.py loaddata datos
+mc (como total comander)
 
-- ./manage.py createsuperuser
 
-- ./manage.py loaddata ejemplo
+- `./manage.py makemigrations`
+- `./manage.py migrate`
+- `./manage.py loaddata datos`
+- `./manage.py createsuperuser`
+- `./manage.py loaddata ejemplo`
 
-borrar db: rm db.sqlte3
+borrar db: `rm db.sqlte3`
 borrar migrations:
-proyectos/migrations: rm 0001/initial.py....etc
+proyectos/migrations: `rm 0001/initial.py ` todos los *.py excepto __init__.py
 
 en caso de borrar todo excepto .git
-git reset --hard HEAD
-//crear la base de datos
- ./manage.py/
+
+`git reset --hard HEAD`
+
 
 sino:
 git clone https://github.com/danielstp/jaguares.git
