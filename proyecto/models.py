@@ -136,7 +136,8 @@ class HistoriaUsuario(models.Model):
     prioridad = models.IntegerField(_(u'Prioridad'), default=0)
     tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=2)
     persona = models.ForeignKey(Persona)
-    documentos = models.ForeignKey(Documento)
+    documentos = models.ForeignKey(Documento, blank=True,null=True)
+    sprint = models.ManyToManyField(Sprint)
 
     def __str__(self):
         return self.titulo

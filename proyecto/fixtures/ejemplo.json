@@ -1,0 +1,50 @@
+[
+{
+  "model": "proyecto.proyecto",
+  "pk": 1,
+  "fields": {
+    "nombre": "Proyecto Prueba",
+    "descripci\u00f3n": "Prueba de Proyecto",
+    "creado": "2016-02-04T05:01:17.421Z",
+    "fechaInicio": "2016-02-04T05:03:22Z",
+    "duraci\u00f3n": "00:00:30"
+  }
+},
+{
+  "model": "proyecto.sprint",
+  "pk": 1,
+  "fields": {
+    "nombre": "Inicial",
+    "proyecto": 1,
+    "descripci\u00f3n": "Inicio de Proyecto",
+    "inicio": "2016-02-04T05:03:50Z",
+    "fin": "2016-03-05T05:04:06Z",
+    "adjunto": null
+  }
+},
+{
+  "model": "proyecto.historiausuario",
+  "pk": 1,
+  "fields": {
+    "numeroHistoria": 0,
+    "fechaElaboracion": "2016-02-04T05:01:17.455Z",
+    "personaElaboro": "DsTp",
+    "titulo": "Prueba",
+    "descripci\u00f3n": "Prueba",
+    "prioridad": 0,
+    "tiempoEstimado": "30.00",
+    "persona": 1,
+    "documentos": null,
+    "sprint": [
+      1
+    ]
+  }
+},
+{
+  "model": "proyecto.persona",
+  "pk": 1,
+  "fields": {
+    "user": 1
+  }
+}
+]
