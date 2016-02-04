@@ -29,6 +29,8 @@ class DocumentoProyectoInline(NestedStackedInline):
 class SprintInline(NestedStackedInline):
     model = Sprint
     inlines = [DocumentoSprintInline]
+    list_display = ('nombre','proyecto')
+    list_filter = ['nombre','proyecto']
 
 
 class ProyectoAdmin(NestedStackedInline):
@@ -51,6 +53,8 @@ class ProyectoAdmin(admin.ModelAdmin):
     inlines = [SprintInline, DocumentoProyectoInline, ComentarioProyectoInline]
 
 class SprintAdmin(admin.ModelAdmin):
+    list_display = ('nombre','proyecto')
+    list_filter = ['nombre','proyecto']
     inlines = [ComentarioSprintInline,]
 
 admin.site.register(Documento)
