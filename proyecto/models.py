@@ -164,7 +164,7 @@ class HistoriaUsuarioSprint(models.Model):
 
 
 class Tarea(models.Model):
-    nombre = models.CharField(_(u'Titulo'),max_length=200,default='')
+    titulo = models.CharField(_(u'Nombre'),max_length=200,default='')
     descripción = models.TextField(_(u'descripción'),default='')
     tiempoInicioEstimado = models.DateTimeField(_(u'Fecha de Inicio (Estimado)'), default=datetime.now())
     tiempoFinalizacionEstimado = models.DateTimeField(_(u'Fecha de finalizacion (Estimado)'), default=datetime.now())
