@@ -138,6 +138,7 @@ class HistoriaUsuario(models.Model):
     persona = models.ForeignKey(Persona)
     documentos = models.ForeignKey(Documento, blank=True,null=True)
     sprint = models.ManyToManyField(Sprint)
+    proyecto = models.ForeignKey(Proyecto)
 
     def __str__(self):
         return self.titulo

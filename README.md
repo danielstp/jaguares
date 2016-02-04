@@ -63,9 +63,11 @@ mc (cm total comander)
 
 - ./manage.py makemigrations
 - ./manage.py migrate
--  ./manage.py loaddata datos
+- ./manage.py loaddata datos
 
 - ./manage.py createsuperuser
+
+- ./manage.py loaddata ejemplo
 
 borrar db: rm db.sqlte3
 borrar migrations:
@@ -81,7 +83,7 @@ git clone https://github.com/danielstp/jaguares.git
 
 
 instaladores
-pip install -r Requirements.txt
+pip install -r requirements.txt
 
 borrar db: rm db.sqlte3
 borrar migrations:

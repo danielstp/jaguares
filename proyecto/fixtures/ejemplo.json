@@ -35,6 +35,7 @@
     "tiempoEstimado": "30.00",
     "persona": 1,
     "documentos": null,
+    "proyecto": 1,
     "sprint": [
       1
     ]

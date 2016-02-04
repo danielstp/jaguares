@@ -59,8 +59,8 @@ class SprintAdmin(admin.ModelAdmin):
 
 
 class HistoriaUsuarioAdmin(admin.ModelAdmin):
-    list_display = ('titulo','fechaElaboracion','personaElaboro','persona')
-    list_filter = ['fechaElaboracion','personaElaboro','titulo','prioridad','persona','sprint']
+    list_display = ('titulo','fechaElaboracion','personaElaboro','persona','proyecto')
+    list_filter = ['fechaElaboracion','personaElaboro','titulo','prioridad','persona','proyecto','sprint']
 
 admin.site.register(Documento)
 admin.site.register(Proyecto, ProyectoAdmin)
