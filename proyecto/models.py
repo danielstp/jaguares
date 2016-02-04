@@ -22,7 +22,7 @@ class Persona(models.Model):
         return Persona._default_manager.get(user=user)
 
     # This field is required.
-    user = models.OneToOneField(User, default=getUser, primary_key=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name="cuenta", verbose_name=_("user"), on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.get_username()
