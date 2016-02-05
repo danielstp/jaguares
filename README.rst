@@ -181,9 +181,12 @@ git clone https://github.com/danielstp/jaguares.git
 
 
 instaladores
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
-borrar db: rm db.sqlte3
+para ambiente de desarrollo
+`pip install -r requirements/local.txt`
+
+borrar db: `rm db.sqlte3`
 borrar migrations:
-proyrctos/migrations: rm 0001/initial.py....etc
+proyrctos/migrations: `rm 0001/initial.py`  ... etc.
 
