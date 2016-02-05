@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db                  import models
+from django.conf                import settings
 from django.utils.translation   import ugettext_lazy as _
 from django.core.validators     import RegexValidator
 from django.contrib.auth.models import User
@@ -22,7 +23,7 @@ class Persona(models.Model):
         return Persona._default_manager.get(user=user)
 
     # This field is required.
-    user = models.OneToOneField(User, related_name="cuenta", verbose_name=_("user"), on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="cuenta", verbose_name=_("user"), on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.get_username()
@@ -171,8 +172,12 @@ class HistoriaTarea(models.Model):
     fecha = models.DateTimeField(('Fecha'),default=datetime.now(),editable=False)
     comentarios = models.TextField(default='')
     tarea = models.ForeignKey(Tarea)
+
     def __str__(self):
         return self.tarea.titulo + self.progreso
+
+    class Meta:
+        verbose_name_plural = _(u'Historia de las Tareas')
 
 
 class CriterioAceptacion(models.Model):

@@ -39,14 +39,17 @@ class ProyectoAdmin(NestedStackedInline):
 
 class ComentarioSprintInline(admin.TabularInline):
     model = ComentarioSprint
+    extra = 1
 
 
 class ComentarioProyectoInline(admin.TabularInline):
     model = ComentarioProyecto
+    extra = 1
 
 
 class ComentarioTareaInline(admin.TabularInline):
     model = ComentarioTarea
+    extra = 1
 
 
 class ProyectoAdmin(admin.ModelAdmin):
