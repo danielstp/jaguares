@@ -98,6 +98,7 @@ class Sprint(models.Model):
     descripción = models.TextField(_(u'descripción'), default='')
     inicio = models.DateTimeField(default=datetime.now())
     fin = models.DateTimeField(default=datetime.now())
+    finalizado = models.BooleanField(default=False)
 
     def _get_duración(self):
         return (self.fin - self.inicio).days
@@ -164,13 +165,13 @@ class CriterioAceptacion(models.Model):
 
 class HistoriaUsuarioSprint(models.Model):
     historiaUsuario = models.ForeignKey(HistoriaUsuario)
-    sprint = models.ForeignKey(Sprint)
+    sprint = models.ForeignKey(Sprint, limit_choices_to={'finalizado': False})
 
     def __str__(self):
         return self.sprint.nombre + " - " + self.historiaUsuario.titulo
 
     class Meta:
-        verbose_name_plural = _(u'Sprint Backlog')
+        verbose_name_plural = _(u'Asignacion HU - Sprint')
 
 
 class Tarea(models.Model):
