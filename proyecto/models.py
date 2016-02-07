@@ -137,6 +137,9 @@ class HistoriaUsuarioSprint(models.Model):
     historiaUsuario = models.ForeignKey(HistoriaUsuario)
     sprint = models.ForeignKey(Sprint)
 
+    def __str__(self):
+        return self.sprint.nombre + " - " + self.historiaUsuario.titulo
+
 
 class Tarea(models.Model):
     titulo = models.CharField(_(u'Titulo'),max_length=200,default='')
