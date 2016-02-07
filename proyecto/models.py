@@ -129,7 +129,7 @@ class HistoriaUsuario(models.Model):
     personaElaboro = models.CharField(_(u'Elaborado por'), max_length=200,default='')
     titulo = models.TextField(_(u'Titulo'), default='')
     descripción = models.TextField(_(u'descripción'), default='')
-    prioridad = models.ForeignKey(Prioridad, default=lambda: Prioridad.objects.get(nombre="Normal"))
+    prioridad = models.ForeignKey(Prioridad, default=2)
     tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=2)
     persona = models.ForeignKey(settings.AUTH_USER_MODEL)
     documentos = models.ForeignKey(Documento, blank=True,null=True)
