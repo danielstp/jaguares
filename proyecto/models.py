@@ -45,6 +45,15 @@ class Estado(models.Model):
         return self.nombre
 
 
+class Prioridad(models.Model):
+    nombre = models.CharField(_(u'Estado'), max_length=30, default='')
+    descripción = models.CharField(_(u'descripción'), max_length=250, default='')
+    valor = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.nombre
+
+
 class Proyecto(models.Model):
     nombre = models.CharField(_(u'Proyecto'), max_length=250)
     descripción = models.CharField(_(u'Descripción'), max_length=250)
@@ -120,7 +129,7 @@ class HistoriaUsuario(models.Model):
     personaElaboro = models.CharField(_(u'Elaborado por'), max_length=200,default='')
     titulo = models.TextField(_(u'Titulo'), default='')
     descripción = models.TextField(_(u'descripción'), default='')
-    prioridad = models.IntegerField(_(u'Prioridad'), default=0)
+    prioridad = models.ForeignKey(Prioridad)
     tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=2)
     persona = models.ForeignKey(settings.AUTH_USER_MODEL)
     documentos = models.ForeignKey(Documento, blank=True,null=True)

@@ -1,5 +1,32 @@
 [
 {
+  "model": "proyecto.prioridad",
+  "pk": 1,
+  "fields": {
+    "nombre": "Alta",
+    "descripción": "Alta Prioridad",
+    "valor": 0
+  }
+},
+{
+  "model": "proyecto.prioridad",
+  "pk": 2,
+  "fields": {
+    "nombre": "Normal",
+    "descripción": "Prioridad Normal",
+    "valor": 100
+  }
+},
+{
+  "model": "proyecto.prioridad",
+  "pk": 3,
+  "fields": {
+    "nombre": "Baja",
+    "descripción": "Baja Prioridad",
+    "valor": 1000
+  }
+},
+{
   "model": "proyecto.estado",
   "pk": 1,
   "fields": {

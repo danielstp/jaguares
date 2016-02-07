@@ -86,9 +86,9 @@
     "personaElaboro": "DsTp",
     "titulo": "Prueba",
     "descripci\u00f3n": "Prueba",
-    "prioridad": 0,
     "tiempoEstimado": "30.00",
     "persona": 1,
+    "prioridad":1,
     "documentos": null,
     "proyecto": 1
   }
