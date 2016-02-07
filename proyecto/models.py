@@ -130,7 +130,7 @@ class HistoriaUsuario(models.Model):
         return self.titulo
 
     class Meta:
-        verbose_name_plural = _(u'Historias de Usuario')
+        verbose_name_plural = _(u'Product Backlog')
 
 
 class HistoriaUsuarioSprint(models.Model):
