@@ -94,7 +94,7 @@ class Sprint(models.Model):
     adjunto = models.ForeignKey(Documento, null=True, blank=True)
     
     def __str__(self):
-        return ((self.descripción + ' (%d dias)') % self.duración)
+        return ((self.nombre + ' (%d dias)') % self.duración)
 
 
 class ComentarioSprint(Comentario):
@@ -169,8 +169,8 @@ class HistoriaTarea(models.Model):
 class CriterioAceptacion(models.Model):
     resumen = models.CharField(max_length=30)
     descripción = models.CharField(max_length=250)
-    miembro = models.ForeignKey(Miembro)
-    tarea = models.ForeignKey(Tarea)
+    autor = models.ForeignKey(Miembro)
+    historiaUsuario = models.ForeignKey(HistoriaUsuario)
 
     def __str__(self):
         return self.resumen
