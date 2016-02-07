@@ -13,10 +13,10 @@ zlib1g-dev
 libpq-dev
 
 ##Pillow dependencies
-libtiff4-dev
-libjpeg8-dev
+libtiff-dev
+libjpeg-dev
 libfreetype6-dev
-liblcms1-dev
+liblcms2-dev
 libwebp-dev
 
 
@@ -28,7 +28,7 @@ python-setuptools
 python3-dev
 python-virtualenv
 python-pip
-firefox
+
 automake
 libtool
 libreadline6
