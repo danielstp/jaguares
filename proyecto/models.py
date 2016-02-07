@@ -169,7 +169,7 @@ class Tarea(models.Model):
     tiempoInicioEstimado = models.DateTimeField(_(u'Fecha de Inicio (Estimado)'), default=datetime.now())
     tiempoFinalizacionEstimado = models.DateTimeField(_(u'Fecha de finalizacion (Estimado)'), default=datetime.now())
     progreso = models.DecimalField('Progreso (de 0 a 100))',default=0,max_digits=10,decimal_places=2)
-    documento = models.ForeignKey(Documento,null=True)
+    documento = models.ForeignKey(Documento,null=True,blank=True)
     miembro = models.ForeignKey(Miembro)
     estado = models.ForeignKey(Estado,default=3)
     historiaUs = models.ForeignKey(HistoriaUsuario)
