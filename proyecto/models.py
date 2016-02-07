@@ -3,7 +3,6 @@ from django.db                  import models
 from django.conf                import settings
 from django.utils.translation   import ugettext_lazy as _
 from django.core.validators     import RegexValidator
-from django.contrib.auth.models import User
 from datetime                   import datetime
 from polymorphic.models         import PolymorphicModel
 
@@ -16,22 +15,9 @@ class Comentario(PolymorphicModel):
         return self.resumen
 
 
-class Persona(models.Model):
-    @classmethod
-    def getUser(cls, request):
-        user = getattr(request, "user", None)
-        return Persona._default_manager.get(user=user)
-
-    # This field is required.
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="cuenta", verbose_name=_("user"), on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.user.get_username()
-
-
 class Rol(models.Model):
     nombre = models.CharField(max_length=30)
-    descripción = models.CharField(max_length=250)
+    descripción = models.TextField()
 
     def __str__(self):
         return self.nombre
@@ -76,11 +62,11 @@ class ComentarioProyecto(Comentario):
 
 class Miembro(models.Model):
     rol = models.ForeignKey(Rol)
-    persona = models.ForeignKey(Persona)
+    persona = models.ForeignKey(settings.AUTH_USER_MODEL)
     proyecto = models.ForeignKey(Proyecto)
 
     def __str__(self):
-        return self.nombre
+        return self.persona.get_username() + " - " + self.rol.nombre
 
 
 class Documento(PolymorphicModel):
@@ -136,7 +122,7 @@ class HistoriaUsuario(models.Model):
     descripción = models.TextField(_(u'descripción'), default='')
     prioridad = models.IntegerField(_(u'Prioridad'), default=0)
     tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=2)
-    persona = models.ForeignKey(Persona)
+    persona = models.ForeignKey(settings.AUTH_USER_MODEL)
     documentos = models.ForeignKey(Documento, blank=True,null=True)
     sprint = models.ManyToManyField(Sprint)
     proyecto = models.ForeignKey(Proyecto)

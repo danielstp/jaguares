@@ -1,5 +1,13 @@
 [
 {
+  "model": "sites.site",
+  "pk": 1,
+  "fields": {
+    "domain": "jaguares.saguez.org",
+    "name": "jaguares"
+  }
+},
+{
   "model": "proyecto.proyecto",
   "pk": 1,
   "fields": {
@@ -23,6 +31,53 @@
   }
 },
 {
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$uPQljirIVskX$3BlzAKNPwiiOQ2Kj/J5oFHctrG0jwtNOkhsThgqyfS8=",
+    "last_login": "2016-02-07T13:01:30Z",
+    "is_superuser": true,
+    "username": "daniel",
+    "first_name": "Daniel",
+    "last_name": "Saguez Tezanos Pinto",
+    "email": "danielstp@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2016-02-06T04:55:28Z",
+    "name": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$kiriQOBnNfWW$PMzRB37Es9z9Lwi6RXlIWJeaBpjAXb1UVNfbEh9jQ6Q=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "vania",
+    "first_name": "Vania Marisela",
+    "last_name": "Catorceno Carballo",
+    "email": "vaniamariselacatorceno@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2016-02-07T13:11:56Z",
+    "name": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "proyecto.miembro",
+  "pk": 1,
+  "fields": {
+    "rol": 1,
+    "persona": 1,
+    "proyecto": 1
+  }
+},
+{
   "model": "proyecto.historiausuario",
   "pk": 1,
   "fields": {
@@ -39,13 +94,6 @@
     "sprint": [
       1
     ]
-  }
-},
-{
-  "model": "proyecto.persona",
-  "pk": 1,
-  "fields": {
-    "user": 1
   }
 }
 ]
