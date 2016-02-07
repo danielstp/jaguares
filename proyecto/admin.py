@@ -74,6 +74,10 @@ class ProyectoAdmin(admin.ModelAdmin):
     inlines = [MiembroProyectoInline, DocumentoProyectoInline, ComentarioProyectoInline, SprintInline,]
 
 
+class CriterioAceptacionInline(admin.TabularInline):
+    model = CriterioAceptacion
+    extra = 1
+
 class SprintAdmin(admin.ModelAdmin):
     list_display = ('nombre','proyecto')
     list_filter = ['nombre','proyecto']
@@ -83,7 +87,7 @@ class SprintAdmin(admin.ModelAdmin):
 class HistoriaUsuarioAdmin(admin.ModelAdmin):
     list_display = ('titulo','fechaElaboracion','personaElaboro','persona','proyecto')
     list_filter = ['fechaElaboracion','personaElaboro','titulo','prioridad','persona','proyecto',]
-    inlines = [HistoriaUsuarioSprintInline,]
+    inlines = [HistoriaUsuarioSprintInline,CriterioAceptacionInline,]
 
 
 admin.site.register(Documento)
