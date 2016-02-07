@@ -124,7 +124,6 @@ class HistoriaUsuario(models.Model):
     tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=2)
     persona = models.ForeignKey(settings.AUTH_USER_MODEL)
     documentos = models.ForeignKey(Documento, blank=True,null=True)
-    sprint = models.ManyToManyField(Sprint)
     proyecto = models.ForeignKey(Proyecto)
 
     def __str__(self):
@@ -132,6 +131,11 @@ class HistoriaUsuario(models.Model):
 
     class Meta:
         verbose_name_plural = _(u'Historias de Usuario')
+
+
+class HistoriaUsuarioSprint(models.Model):
+    historiaUsuario = models.ForeignKey(HistoriaUsuario)
+    sprint = models.ForeignKey(Sprint)
 
 
 class Tarea(models.Model):

@@ -11,6 +11,7 @@ from proyecto.models import ComentarioSprint
 from proyecto.models import Proyecto
 from proyecto.models import Miembro
 from proyecto.models import HistoriaUsuario
+from proyecto.models import HistoriaUsuarioSprint
 from proyecto.models import HistoriaTarea
 from proyecto.models import Tarea
 from proyecto.models import Rol
@@ -19,17 +20,26 @@ from proyecto.models import Sprint
 from proyecto.models import EstadoEmocional
 from proyecto.models import Estado
 
+
+class HistoriaUsuarioSprintInline(NestedStackedInline):
+    model = HistoriaUsuarioSprint
+    extra = 1
+
+
 class DocumentoSprintInline(NestedStackedInline):
     model = DocumentoSprint
     extra = 1
+
 
 class MiembroProyectoInline(admin.TabularInline):
     model = Miembro
     extra = 1
 
+
 class DocumentoProyectoInline(NestedStackedInline):
     model = DocumentoProyecto
     extra = 1
+
 
 class SprintInline(NestedStackedInline):
     model = Sprint
@@ -72,7 +82,9 @@ class SprintAdmin(admin.ModelAdmin):
 
 class HistoriaUsuarioAdmin(admin.ModelAdmin):
     list_display = ('titulo','fechaElaboracion','personaElaboro','persona','proyecto')
-    list_filter = ['fechaElaboracion','personaElaboro','titulo','prioridad','persona','proyecto','sprint']
+    list_filter = ['fechaElaboracion','personaElaboro','titulo','prioridad','persona','proyecto',]
+    inlines = [HistoriaUsuarioSprintInline,]
+
 
 admin.site.register(Documento)
 admin.site.register(Proyecto, ProyectoAdmin)
