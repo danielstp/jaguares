@@ -8,6 +8,48 @@
   }
 },
 {
+  "model": "account.emailconfirmation",
+  "pk": 1,
+  "fields": {
+    "email_address": 1,
+    "created": "2016-02-08T17:58:28.439Z",
+    "sent": "2016-02-08T17:58:28.445Z",
+    "key": "synwkxb8wxkzrejw2xqahyzaxprlteeqjdzhyevk0kdhh5vnvmzqsqmceh3msida"
+  }
+},
+{
+  "model": "proyecto.rol",
+  "pk": 1,
+  "fields": {
+    "nombre": "Product owner",
+    "descripci\u00f3n": "The product owner represents the stakeholders and is the voice of the customer, who is accountable for ensuring that the team delivers value to the business. The product owner writes (or has the team write) customer-centric items (typically user stories), ranks and prioritizes them, and adds them to the product backlog. Scrum teams should have one product owner, this role should not be combined with that of the scrum master. The product owner should be on the business side of the project, and should never interfere or interact with team members on the technical aspects of the development task.[14] This role is equivalent to the customer representative role in some other agile frameworks."
+  }
+},
+{
+  "model": "proyecto.rol",
+  "pk": 2,
+  "fields": {
+    "nombre": "Scrum master",
+    "descripci\u00f3n": "Scrum is facilitated by a scrum master, who is accountable for removing impediments to the ability of the team to deliver the product goals and deliverables. The scrum master is not a traditional team lead or project manager, but acts as a buffer between the team and any distracting influences. The scrum master ensures that the scrum process is used as intended. The scrum master helps ensure the team follows the agreed scrum processes, often facilitates key sessions, and encourages the team to improve. The role has also been referred to as a team facilitator or servant-leader to reinforce these dual perspectives.\r\n\r\nThe core responsibilities of a scrum master include (but are not limited to):\r\n\r\n- Helping the product owner maintain the product backlog in a way that ensures the needed work is well understood so the team can continually make forward progress\r\n- Helping the team to determine the definition of done for the product, with input from key stakeholders\r\n- Coaching the team, within the scrum principles, in order to deliver high-quality features for its product\r\n- Promoting self-organization within the team\r\n- Helping the scrum team to avoid or remove impediments to its progress, whether internal or external to the team\r\n- Facilitating team events to ensure regular progress\r\n- Educating key stakeholders in the product on scrum principles\r\nOne of the ways the scrum master role differs from a project manager is that the latter may have people management responsibilities and the scrum master does not. Scrum does not formally recognise the role of project manager, as traditional command and control tendencies would cause difficulties"
+  }
+},
+{
+  "model": "proyecto.rol",
+  "pk": 3,
+  "fields": {
+    "nombre": "Developer",
+    "descripci\u00f3n": "Developer"
+  }
+},
+{
+  "model": "proyecto.rol",
+  "pk": 4,
+  "fields": {
+    "nombre": "QA",
+    "descripci\u00f3n": "Quality Assurance Engineer"
+  }
+},
+{
   "model": "proyecto.proyecto",
   "pk": 1,
   "fields": {
@@ -35,7 +77,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$24000$uPQljirIVskX$3BlzAKNPwiiOQ2Kj/J5oFHctrG0jwtNOkhsThgqyfS8=",
-    "last_login": "2016-02-07T13:01:30Z",
+    "last_login": "2016-02-08T17:59:02.064Z",
     "is_superuser": true,
     "username": "daniel",
     "first_name": "Daniel",
@@ -86,11 +128,20 @@
     "personaElaboro": "DsTp",
     "titulo": "Prueba",
     "descripci\u00f3n": "Prueba",
+    "prioridad": 1,
     "tiempoEstimado": "30.00",
     "persona": 1,
-    "prioridad":1,
-    "documentos": null,
     "proyecto": 1
+  }
+},
+{
+  "model": "account.emailaddress",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "email": "danielstp@gmail.com",
+    "verified": true,
+    "primary": true
   }
 }
 ]

@@ -95,13 +95,13 @@ class Sprint(models.Model):
     descripción = models.TextField(_(u'descripción'), default='')
     inicio = models.DateTimeField(default=datetime.now())
     fin = models.DateTimeField(default=datetime.now())
-    
+
     def _get_duración(self):
         return (self.fin - self.inicio).days
-    
+
     duración = property(_get_duración)
     adjunto = models.ForeignKey(Documento, null=True, blank=True)
-    
+
     def __str__(self):
         return ((self.nombre + ' (%d dias)') % self.duración)
 
@@ -132,7 +132,6 @@ class HistoriaUsuario(models.Model):
     prioridad = models.ForeignKey(Prioridad, default=2)
     tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=2)
     persona = models.ForeignKey(settings.AUTH_USER_MODEL)
-    documentos = models.ForeignKey(Documento, blank=True,null=True)
     proyecto = models.ForeignKey(Proyecto)
 
     def __str__(self):
@@ -140,6 +139,10 @@ class HistoriaUsuario(models.Model):
 
     class Meta:
         verbose_name_plural = _(u'Product Backlog')
+
+
+class DocumentoHistoriaUsuario(Documento):
+    historiaUsuario = models.ForeignKey(HistoriaUsuario)
 
 
 class CriterioAceptacion(models.Model):

@@ -2,23 +2,25 @@ from django.contrib import admin
 from polymorphic.admin import PolymorphicParentModelAdmin, PolymorphicChildModelAdmin
 from nested_inlines.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 
-from proyecto.models import Documento
-from proyecto.models import DocumentoSprint
-from proyecto.models import DocumentoProyecto
-from proyecto.models import ComentarioTarea
-from proyecto.models import ComentarioProyecto
-from proyecto.models import ComentarioSprint
-from proyecto.models import Proyecto
-from proyecto.models import Miembro
-from proyecto.models import HistoriaUsuario
-from proyecto.models import HistoriaUsuarioSprint
-from proyecto.models import HistoriaTarea
-from proyecto.models import Tarea
-from proyecto.models import Rol
-from proyecto.models import CriterioAceptacion
-from proyecto.models import Sprint
-from proyecto.models import EstadoEmocional
-from proyecto.models import Estado
+from .models import Documento
+from .models import DocumentoSprint
+from .models import DocumentoHistoriaUsuario
+from .models import DocumentoProyecto
+from .models import ComentarioTarea
+from .models import ComentarioProyecto
+from .models import ComentarioSprint
+from .models import Proyecto
+from .models import Miembro
+from .models import HistoriaUsuario
+from .models import HistoriaUsuarioSprint
+from .models import HistoriaTarea
+from .models import Tarea
+from .models import Rol
+from .models import CriterioAceptacion
+from .models import Sprint
+from .models import EstadoEmocional
+from .models import Estado
+from .models import Prioridad
 
 
 class HistoriaUsuarioSprintInline(NestedStackedInline):
@@ -28,6 +30,11 @@ class HistoriaUsuarioSprintInline(NestedStackedInline):
 
 class DocumentoSprintInline(NestedStackedInline):
     model = DocumentoSprint
+    extra = 1
+
+
+class DocumentoHistoriaUsuarioInline(NestedStackedInline):
+    model = DocumentoHistoriaUsuario
     extra = 1
 
 
@@ -87,7 +94,7 @@ class SprintAdmin(admin.ModelAdmin):
 class HistoriaUsuarioAdmin(admin.ModelAdmin):
     list_display = ('titulo','fechaElaboracion','personaElaboro','persona','proyecto')
     list_filter = ['fechaElaboracion','personaElaboro','titulo','prioridad','persona','proyecto',]
-    inlines = [HistoriaUsuarioSprintInline,CriterioAceptacionInline,]
+    inlines = [HistoriaUsuarioSprintInline,CriterioAceptacionInline,DocumentoHistoriaUsuarioInline]
 
 
 admin.site.register(Documento)
@@ -101,3 +108,4 @@ admin.site.register(CriterioAceptacion)
 admin.site.register(Sprint, SprintAdmin)
 admin.site.register(EstadoEmocional)
 admin.site.register(Estado)
+admin.site.register(Prioridad)
