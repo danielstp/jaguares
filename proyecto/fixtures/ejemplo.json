@@ -18,46 +18,30 @@
   }
 },
 {
-  "model": "proyecto.rol",
+  "model": "proyecto.comentario",
   "pk": 1,
   "fields": {
-    "nombre": "Product owner",
-    "descripci\u00f3n": "The product owner represents the stakeholders and is the voice of the customer, who is accountable for ensuring that the team delivers value to the business. The product owner writes (or has the team write) customer-centric items (typically user stories), ranks and prioritizes them, and adds them to the product backlog. Scrum teams should have one product owner, this role should not be combined with that of the scrum master. The product owner should be on the business side of the project, and should never interfere or interact with team members on the technical aspects of the development task.[14] This role is equivalent to the customer representative role in some other agile frameworks."
-  }
-},
-{
-  "model": "proyecto.rol",
-  "pk": 2,
-  "fields": {
-    "nombre": "Scrum master",
-    "descripci\u00f3n": "Scrum is facilitated by a scrum master, who is accountable for removing impediments to the ability of the team to deliver the product goals and deliverables. The scrum master is not a traditional team lead or project manager, but acts as a buffer between the team and any distracting influences. The scrum master ensures that the scrum process is used as intended. The scrum master helps ensure the team follows the agreed scrum processes, often facilitates key sessions, and encourages the team to improve. The role has also been referred to as a team facilitator or servant-leader to reinforce these dual perspectives.\r\n\r\nThe core responsibilities of a scrum master include (but are not limited to):\r\n\r\n- Helping the product owner maintain the product backlog in a way that ensures the needed work is well understood so the team can continually make forward progress\r\n- Helping the team to determine the definition of done for the product, with input from key stakeholders\r\n- Coaching the team, within the scrum principles, in order to deliver high-quality features for its product\r\n- Promoting self-organization within the team\r\n- Helping the scrum team to avoid or remove impediments to its progress, whether internal or external to the team\r\n- Facilitating team events to ensure regular progress\r\n- Educating key stakeholders in the product on scrum principles\r\nOne of the ways the scrum master role differs from a project manager is that the latter may have people management responsibilities and the scrum master does not. Scrum does not formally recognise the role of project manager, as traditional command and control tendencies would cause difficulties"
-  }
-},
-{
-  "model": "proyecto.rol",
-  "pk": 3,
-  "fields": {
-    "nombre": "Developer",
-    "descripci\u00f3n": "Developer"
-  }
-},
-{
-  "model": "proyecto.rol",
-  "pk": 4,
-  "fields": {
-    "nombre": "QA",
-    "descripci\u00f3n": "Quality Assurance Engineer"
+    "polymorphic_ctype": 19,
+    "comentario": "<p>La se\u00f1ora Elphinstone - que era el nombre de la mujer de blanco - escuchar\u00eda a ning\u00fan razonamiento, y mantuvo un llamamiento a \"George\"; pero su hermana-en-ley fue sorprendente tranquila y deliberada, y al final acept\u00f3 la sugerencia de mi hermano. Por lo tanto, el dise\u00f1o de cruzar el gran camino del norte, se fueron hacia Barnet, mi hermano que lleva el pony para ahorrar tanto como sea posible. A medida que el sol se desliz\u00f3 hasta el cielo el d\u00eda se hizo excesivamente caliente, y bajo los pies de una arena gruesa, de color blanquecino creci\u00f3 quema y el cegamiento, de manera que viajaban s\u00f3lo muy lentamente. Las coberturas eran grises de polvo. Y a medida que avanzaban hacia Barnet un murmullo tumultuoso hizo m\u00e1s fuerte.</p>\r\nComenzaron a conocer a m\u00e1s gente. En su mayor parte \u00e9stos estaban mirando delante de ellos, murmurando preguntas indistintas, cansado, ojeroso, impuro. Un hombre en traje de noche se los pas\u00f3 a pie, con los ojos en el suelo. Oyeron su voz, y, mirando hacia atr\u00e1s en \u00e9l, vieron una mano apretada en el pelo y las otras cosas invisibles de latir. Su paroxismo de rabia por, continu\u00f3 su camino sin mirar atr\u00e1s.\r\nComo parte de mi hermano continu\u00f3 hacia el cruce al sur de Barnet vieron a una mujer acercarse a la carretera a trav\u00e9s de algunos campos de la izquierda, llevando a un ni\u00f1o y con otros dos hijos; y luego se pasa a un hombre en negro sucio, con una gruesa vara en una mano y una peque\u00f1a maleta en la otra. A continuaci\u00f3n, la vuelta de la esquina de la calle, de entre las villas que se guardaban en su confluencia con la carretera, se produjo un peque\u00f1o carro tirado por un caballo negro sudoraci\u00f3n y conducido por un joven cetrino en un hongo, de color gris con polvo. Hab\u00eda tres ni\u00f1as, muchachas de la f\u00e1brica de East End, y un par de ni\u00f1os peque\u00f1os llenos en el carro.\r\n\"Esto va a Tike nos rahnd Edgware?\" pidi\u00f3 al conductor, mirada salvaje, de cara blanca; y cuando mi hermano le dijo que ser\u00eda si se volv\u00eda hacia la izquierda, se prepararon r\u00e1pidamente a la vez sin la formalidad de agradecimiento.\r\nMi hermano vio un humo gris p\u00e1lido o bruma creciente entre las casas en frente de ellos, y velando la fachada blanca de una terraza m\u00e1s all\u00e1 de la carretera que apareci\u00f3 entre las partes posteriores de las villas. La se\u00f1ora Elphinstone repente grit\u00f3 en varias lenguas de fuego rojo ahumado saltando por encima de las casas en frente de ellos contra el cielo caliente, azul. El murmullo de ruido se resolvi\u00f3 ahora en la mezcla desordenada de muchas voces, la gride de muchas ruedas, el crujido de carros, y el staccato de los cascos. El carril no vino redondo bruscamente cincuenta yardas de la intersecci\u00f3n.\r\n\"\u00a1Cielos!\" -exclam\u00f3 la se\u00f1ora Elphinstone. \"\u00bfQu\u00e9 es esto que nos est\u00e1 conduciendo hacia?\"\r\nMi hermano se detuvo.\r\nPor la carretera principal era un hervidero de gente, un torrente de seres humanos corriendo hacia el norte, una presi\u00f3n en otra. Un gran banco de polvo, blanca y luminosa en el resplandor del sol, hizo que todo el plazo de veinte pies del suelo gris y poco definidos y se ha renovado constantemente por los pasos apresurados de una densa multitud de caballos y de hombres y mujeres a pie, y por las ruedas de los veh\u00edculos de todo tipo.\r\n\"\u00a1Camino!\" mi hermano oy\u00f3 voces llorando. \"\u00a1Ceder el paso!\"\r\nEra como montar en el humo de un incendio a acercarse al punto de encuentro de la v\u00eda y la carretera; la multitud rugi\u00f3 como un fuego, y el polvo estaba caliente y picante. Y, de hecho, un poco m\u00e1s arriba de la carretera una villa estaba ardiendo y el env\u00edo de masas giratorias de humo negro a trav\u00e9s del camino de aumentar la confusi\u00f3n.\r\nGoogle Traductor para empresas:Translator ToolkitTraductor de sitios webGlobal Market Finder",
+    "fecha": "2016-02-08T22:57:35.425Z"
   }
 },
 {
   "model": "proyecto.proyecto",
   "pk": 1,
   "fields": {
-    "nombre": "Proyecto Prueba",
-    "descripci\u00f3n": "Prueba de Proyecto",
+    "nombre": "Jaguares",
+    "descripci\u00f3n": "Es el proyecto para la materia de desarrollo \u00e1gil de la Universidad Mayor de San Sim\u00f3n II-2015",
     "creado": "2016-02-04T05:01:17.421Z",
-    "fechaInicio": "2016-02-04T05:03:22Z",
-    "duraci\u00f3n": "00:00:30"
+    "fechaInicio": "2015-07-01T10:00:00Z",
+    "duraci\u00f3n": "150 00:00:00"
+  }
+},
+{
+  "model": "proyecto.comentarioproyecto",
+  "pk": 1,
+  "fields": {
+    "proyecto": 1
   }
 },
 {
@@ -67,8 +51,20 @@
     "nombre": "Inicial",
     "proyecto": 1,
     "descripci\u00f3n": "Inicio de Proyecto",
-    "inicio": "2016-02-04T05:03:50Z",
-    "fin": "2016-03-05T05:04:06Z",
+    "inicio": "2015-07-01T10:00:00Z",
+    "fin": "2015-12-12T22:00:00Z",
+    "adjunto": null
+  }
+},
+{
+  "model": "proyecto.sprint",
+  "pk": 2,
+  "fields": {
+    "nombre": "Uno",
+    "proyecto": 1,
+    "descripci\u00f3n": "Mostraremos el avance hasta lo que se avance",
+    "inicio": "2015-12-14T10:00:00Z",
+    "fin": "2016-02-10T22:00:00Z",
     "adjunto": null
   }
 },
@@ -77,7 +73,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$24000$uPQljirIVskX$3BlzAKNPwiiOQ2Kj/J5oFHctrG0jwtNOkhsThgqyfS8=",
-    "last_login": "2016-02-08T17:59:02.064Z",
+    "last_login": "2016-02-08T22:33:37.281Z",
     "is_superuser": true,
     "username": "daniel",
     "first_name": "Daniel",
@@ -114,8 +110,17 @@
   "model": "proyecto.miembro",
   "pk": 1,
   "fields": {
-    "rol": 1,
+    "rol": 3,
     "persona": 1,
+    "proyecto": 1
+  }
+},
+{
+  "model": "proyecto.miembro",
+  "pk": 2,
+  "fields": {
+    "rol": 1,
+    "persona": 2,
     "proyecto": 1
   }
 },
