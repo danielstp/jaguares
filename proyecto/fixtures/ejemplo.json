@@ -175,6 +175,44 @@
   }
 },
 {
+  "model": "users.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$kiriQOBnNfWW$PMzRB37Es9z9Lwi6RXlIWJeaBpjAXb1UVNfbEh9jQ6Q=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "jmejia",
+    "first_name": "Juan Pablo",
+    "last_name": "Mejia",
+    "email": "cromeocromeo@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2016-02-07T13:11:56Z",
+    "name": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$kiriQOBnNfWW$PMzRB37Es9z9Lwi6RXlIWJeaBpjAXb1UVNfbEh9jQ6Q=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "jhannet",
+    "first_name": "Jhannet",
+    "last_name": "Jhannet",
+    "email": "jhannet@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2016-02-07T13:11:56Z",
+    "name": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "proyecto.miembro",
   "pk": 1,
   "fields": {
@@ -193,6 +231,24 @@
   }
 },
 {
+  "model": "proyecto.miembro",
+  "pk": 3,
+  "fields": {
+    "rol": 4,
+    "persona": 3,
+    "proyecto": 1
+  }
+},
+{
+  "model": "proyecto.miembro",
+  "pk": 4,
+  "fields": {
+    "rol": 3,
+    "persona": 4,
+    "proyecto": 1
+  }
+},
+{
   "model": "proyecto.historiausuario",
   "pk": 1,
   "fields": {
@@ -201,6 +257,51 @@
     "personaElaboro": "DsTp",
     "titulo": "H0",
     "descripci\u00f3n": "Como administrador del proyecto me gustar\u00eda poder crear un proyecto con Sprints tal que pueda registrar el inicio, duraci\u00f3n, comentarios y documentos adjuntos",
+    "prioridad": 2,
+    "tiempoEstimado": "30.00",
+    "persona": 1,
+    "proyecto": 1
+  }
+},
+{
+  "model": "proyecto.historiausuario",
+  "pk": 2,
+  "fields": {
+    "numeroHistoria": 1,
+    "fechaElaboracion": "2016-02-04T05:01:17.455Z",
+    "personaElaboro": "DsTp",
+    "titulo": "H1",
+    "descripci\u00f3n": "Como Administrador de proyecto me gustaria poder crear Historias de usuario en Lista Backlog y asignar a un Sprint",
+    "prioridad": 2,
+    "tiempoEstimado": "30.00",
+    "persona": 1,
+    "proyecto": 1
+  }
+},
+{
+  "model": "proyecto.historiausuario",
+  "pk": 3,
+  "fields": {
+    "numeroHistoria": 2,
+    "fechaElaboracion": "2016-02-04T05:01:17.455Z",
+    "personaElaboro": "DsTp",
+    "titulo": "H2",
+    "descripci\u00f3n": "Como Administrador de proyecto me gustaria poder crear Tareas para cumplir una HU",
+    "prioridad": 2,
+    "tiempoEstimado": "30.00",
+    "persona": 1,
+    "proyecto": 1
+  }
+},
+{
+  "model": "proyecto.historiausuario",
+  "pk": 4,
+  "fields": {
+    "numeroHistoria": 3,
+    "fechaElaboracion": "2016-02-04T05:01:17.455Z",
+    "personaElaboro": "DsTp",
+    "titulo": "H3",
+    "descripci\u00f3n": "Como Administrar de proyecto quisiera poder agregar mienbros a un equipo de trabajo del proyecto",
     "prioridad": 2,
     "tiempoEstimado": "30.00",
     "persona": 1,
