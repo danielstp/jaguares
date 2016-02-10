@@ -190,3 +190,5 @@ borrar db: `rm db.sqlte3`
 borrar migrations:
 proyrctos/migrations: `rm 0001/initial.py`  ... etc.
 
+## Crear los datos de Ejemplo
+- `./manage.py dumpdata -e auth.user --indent 2 -e auth.permission -e proyecto.estado -e contenttypes.contenttype -e proyecto.prioridad -e sessions.session -e admin.logentry -e proyecto.rol > proyecto/fixtures/ejemplo.json`
