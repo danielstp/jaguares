@@ -200,7 +200,7 @@
     "fechaElaboracion": "2016-02-04T05:01:17.455Z",
     "personaElaboro": "DsTp",
     "titulo": "H0",
-    "descripci\u00f3n": "Debo poder crear un proyecto con al menos un sprint\r\nDebo poder crear un sprint con fecha de inicio\r\nDebo poder crear un sprint con duraci\u00f3n de la misma\r\nDebo poder crear un sprint con descripci\u00f3n\r\nDebo poder crear un sprint junto la opci\u00f3n de agregar Documentos Adjuntos\r\ndebo poder editar los datos del Sprint.",
+    "descripci\u00f3n": "Como administrador del proyecto me gustar\u00eda poder crear un proyecto con Sprints tal que pueda registrar el inicio, duraci\u00f3n, comentarios y documentos adjuntos",
     "prioridad": 2,
     "tiempoEstimado": "30.00",
     "persona": 1,
