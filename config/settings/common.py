@@ -32,6 +32,7 @@ DJANGO_APPS = (
     # 'django.contrib.humanize',
 
     # Admin
+    'grappelli',
     'django.contrib.admin',
 )
 THIRD_PARTY_APPS = (
@@ -170,6 +171,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here
+                "django.core.context_processors.request",
             ],
         },
     },

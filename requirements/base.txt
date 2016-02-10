@@ -48,3 +48,5 @@ redis>=2.10.0
 # Your custom requirements go here
 git+https://github.com/silverfix/dj-nested-inlines#egg=dj-nested-inlines
 django_polymorphic >= 0.8.1
+
+django-grappelli >= 2.7.3
