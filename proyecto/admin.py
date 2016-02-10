@@ -97,6 +97,10 @@ class HistoriaUsuarioAdmin(admin.ModelAdmin):
     inlines = [HistoriaUsuarioSprintInline,CriterioAceptacionInline,DocumentoHistoriaUsuarioInline]
 
 
+class CriterioAceptacionAdmin(admin.ModelAdmin):
+    list_display = ('resumen','autor','historiaUsuario')
+    list_filter = ['autor', 'historiaUsuario']
+
 admin.site.register(Documento)
 admin.site.register(Proyecto, ProyectoAdmin)
 admin.site.register(Miembro)
@@ -104,7 +108,7 @@ admin.site.register(HistoriaUsuario, HistoriaUsuarioAdmin)
 admin.site.register(HistoriaTarea)
 admin.site.register(Tarea)
 admin.site.register(Rol)
-admin.site.register(CriterioAceptacion)
+admin.site.register(CriterioAceptacion, CriterioAceptacionAdmin)
 admin.site.register(Sprint, SprintAdmin)
 admin.site.register(EstadoEmocional)
 admin.site.register(Estado)
