@@ -72,7 +72,7 @@ class ComentarioTareaInline(admin.TabularInline):
     model = ComentarioTarea
     extra = 1
 
-class TareaHistoriaUsuarioInline(admin.TabularInline):
+class TareaInline(admin.TabularInline):
     model = Tarea
     extra = 1
 
@@ -100,15 +100,11 @@ class SprintAdmin(admin.ModelAdmin):
 class HistoriaUsuarioAdmin(admin.ModelAdmin):
     list_display = ('titulo','fechaElaboracion','personaElaboro','persona','proyecto')
     list_filter = ['fechaElaboracion','personaElaboro','titulo','prioridad','persona','proyecto',]
-    inlines = [HistoriaUsuarioSprintInline,CriterioAceptacionInline,DocumentoHistoriaUsuarioInline]
+    inlines = [HistoriaUsuarioSprintInline,CriterioAceptacionInline,DocumentoHistoriaUsuarioInline, TareaInline]
 
 
 class CriterioAceptacionAdmin(admin.ModelAdmin):
     list_display = ('resumen','autor','historiaUsuario')
-    list_filter = ['autor', 'historiaUsuario']
-
-class TareaHistoriaUsuarioAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'descripcion', 'progreso', 'documento')
     list_filter = ['autor', 'historiaUsuario']
 
 
