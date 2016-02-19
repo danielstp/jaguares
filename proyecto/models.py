@@ -130,10 +130,10 @@ class DocumentoProyecto(Documento):
 class HistoriaUsuario(models.Model):
     # numeroHistoria = models.IntegerField(_(u'Nro. Historia'), default=0)
     fechaElaboracion = models.DateTimeField(_(u'Fecha elaboración'), default=datetime.now(),editable=False)
-    personaElaboro = models.CharField(_(u'Elaborado por'), max_length=200,default='')
+    personaElaboro = models.CharField(_(u'Elaborado por'), max_length=200,default='', editable=False)
     titulo = models.TextField(_(u'Titulo'), default='')
     descripción = models.TextField(_(u'descripción'), default='')
-    prioridad = models.ForeignKey(Prioridad, default=2)
+    prioridad = models.ForeignKey(Prioridad)
     tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=2)
     persona = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='Responsable')
     proyecto = models.ForeignKey(Proyecto)
