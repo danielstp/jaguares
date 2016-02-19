@@ -98,7 +98,7 @@ class SprintAdmin(admin.ModelAdmin):
 
 
 class HistoriaUsuarioAdmin(admin.ModelAdmin):
-    list_display = ('titulo','fechaElaboracion','personaElaboro','persona','proyecto')
+    list_display = ('titulo','fechaElaboracion','personaElaboro','persona','proyecto','prioridad')
     list_filter = ['fechaElaboracion','personaElaboro','titulo','prioridad','persona','proyecto',]
     inlines = [HistoriaUsuarioSprintInline,CriterioAceptacionInline,DocumentoHistoriaUsuarioInline, TareaInline]
 
