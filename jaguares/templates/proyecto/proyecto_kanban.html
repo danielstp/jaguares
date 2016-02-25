@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Proyecto: {{ proyecto.nombre }}  Kanban {% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h2>{{ proyecto.nombre }}</h2>
+      {% if proyecto.descripción %}
+        <p>{{ proyecto.descripción }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+     {% for sprint in sprints %}
+      <h3>{{ sprint.nombre }}</h3>
+        <p>{{ sprint.descripción }}</p>
+     {% endfor %}
+    </div>
+  </div>
+
+
+</div>
+  <div class="row" id="kanban">
+     <div class ="column">
+     {% for estado in estados %}
+
+          <div class="col-md-2">
+            <div class="columnHeader">
+               <a class="" title="Column settings" ><i class="glyphicon glyphicon-wrench"></i></a>
+                <a title="Add card to column" class="pull-right" ><i class="glyphicon glyphicon-plus"></i></a>
+                <span >{{ estado.nombre }}</span>
+            </div>
+            <ul class="ui-sortable cards" >
+
+     {% for h in historiasU %}
+        {% for tarea in h.tareas %}{% if tarea.estado == estado %}
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>{{ tarea.titulo }} {{h.titulo}}</h3>
+        <p>{{ tarea.descripción }}</p>
+    </div>
+  </div> {% endif %}
+     {% endfor %}
+     {% endfor %}
+            </ul>
+        </div>
+     {% endfor %}
+     </div>
+  </div>
+
+{% endblock content %}
+
+
+{% block css %}
+{{ block.super }}
+    <link href="{% static '/css/themes/trello.css' %}" rel="stylesheet">
+{% endblock %}

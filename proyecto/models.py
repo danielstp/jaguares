@@ -58,7 +58,7 @@ class Prioridad(models.Model):
 
 
 class Proyecto(models.Model):
-    nombre = models.CharField(_(u'Proyecto'), max_length=250)
+    nombre = models.CharField(_(u'Proyecto'), max_length=250, unique=True)
     descripción = models.CharField(_(u'Descripción'), max_length=250)
     creado = models.DateTimeField(default=datetime.now(), editable=False)
     fechaInicio = models.DateTimeField(_(u'Fecha inicio'), default=datetime.now(), editable=True)

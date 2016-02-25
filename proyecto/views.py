@@ -1,7 +1,44 @@
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, unicode_literals
+
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
-from .models import Proyecto
 
-def index(request):
-    p = Proyecto.objects.all()
-    return render(request, 'proyecto/proyecto.html', {'proyectos':p})
+from django.core.urlresolvers import reverse
+from django.views.generic import DetailView, ListView, RedirectView, UpdateView
+
+from braces.views import LoginRequiredMixin
+
+
+from .models import Proyecto, Sprint, HistoriaUsuario, Estado, Tarea
+
+def kanban(request, nombre):
+    p = Proyecto.objects.get(nombre=nombre)
+    s = Sprint.objects.filter(proyecto=p.pk)
+    hu = HistoriaUsuario.objects.filter(proyecto=p.pk)
+    for h in hu:
+        h.tareas = Tarea.objects.filter(historiaUs = h.pk)
+    es = Estado.objects.all()
+    return render(request, 'proyecto/proyecto_kanban.html', {'proyecto':p, 'sprints':s, 'historiasU':hu, 'estados':es})
+
+
+class ProyectoDetailView(LoginRequiredMixin, DetailView):
+    model = Proyecto
+    slug_field = 'nombre'
+    slug_url_kwarg = 'nombre'
+
+
+class ProyectoKanbanView(LoginRequiredMixin, DetailView):
+    template_name = 'proyecto/proyecto_kanban.html'
+    model = Proyecto
+    slug_field = 'nombre'
+    slug_url_kwarg = 'nombre'
+
+
+class ProyectoUpdateView(LoginRequiredMixin, UpdateView):
+    model = Proyecto
+
+
+class ProyectoListView(LoginRequiredMixin, ListView):
+    model = Proyecto
+

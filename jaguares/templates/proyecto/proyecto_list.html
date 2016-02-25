@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}{% load i18n %}
-{% block title %}Members{% endblock %}
+{% block title %}Proyectos{% endblock %}
 
 {% block content %}
 
@@ -9,7 +9,7 @@
     <h2>Proyectos</h2>
 
     <div class="list-group">
-        {% for proyecto in proyectos %}
+        {% for proyecto in proyecto_list %}
           <a href="{% url 'proyecto:detail' proyecto.nombre %}" class="list-group-item">
             <h4 class="list-group-item-heading">{{ proyecto.nombre }}</h4>
           </a>
@@ -18,3 +18,4 @@
     </div>
 
 {% endblock content %}
+
