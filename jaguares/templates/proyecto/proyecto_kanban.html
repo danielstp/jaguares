@@ -2,63 +2,652 @@
 {% load static %}
 
 {% block title %}Proyecto: {{ proyecto.nombre }}  Kanban {% endblock %}
+{% block body_head %}
+  <div id="nocss"> Your browser was unable to load all of Trello's resources.
+    They may have been blocked by your firewall, proxy or browser
+    configuration.<br> Press Ctrl+F5 or Ctrl+Shift+R to have your browser try
+  again and if that doesn't work, check out our <a href="#">
+    troubleshooting guide</a>.<hr>
+  </div>
+  <noscript class="big-message">&lt;h1&gt;To use Jaguares, please enable
+    JavaScript.&lt;/h1&gt;
+  </noscript>
+  <div id="boards-drawer">
+    <div class="boards-drawer">
+      <div class="boards-drawer-header">
+        <h3>Tableros
+        </h3>
+      </div>
+      <div class="board-drawer-content u-fancy-scrollbar" style="max-height: 775px;">
+        <input class="js-search-boards" type="text" placeholder="Buscar tableros por nombre…">
+          <div class="js-board-drawer-boards">
+            <div>
+              <p class="quiet u-text-align-center hide" style="margin: 6px 4px 0 0; padding: 8px 12px;">
+                Sin tableros
+              </p>
+              <div class="starred-sidebar-boards-list js-starred-boards">
+                <div class="">
+                  <div class="sidebar-section-header quiet js-sidebar-section-header bold">
+                    <span class="icon-sm icon-star sidebar-section-header-icon">
+                    </span>
+                    <span class="sidebar-section-header-title">Tableros
+                      marcados
+                    </span>
+                    <span class="icon-sm icon-remove sidebar-section-header-toggle-icon dark-hover js-collapse-section">
+                    </span>
+                    <span class="icon-sm icon-add sidebar-section-header-toggle-icon dark-hover js-expand-section hide">
+                    </span>
+                  </div>
+                  <ul class="sidebar-boards-list js-board-list ui-sortable">
+                    <li class="compact-board-tile starred">
+                      <div class="compact-board-tile-wrapper">
+                        <span class="compact-board-tile-background" style="background-color: #89609E;">
+                        </span>
+                        <span class="compact-board-tile-fade">
+                        </span>
+                        <a class="js-open-board compact-board-tile-link dark" href="#sprint-2">
+                          <span class="compact-board-tile-link-thumbnail" style="background-color: #89609E;">
+                          </span>
+                          <span class="compact-board-tile-link-text details has-sub-name">
+                            <span class="compact-board-tile-link-text-name" title="{{ proyecto.nombre }}"> {{ proyecto.nombre }}
 
-{% block content %}
-<div class="container">
-
-  <div class="row">
-    <div class="col-sm-12">
-
-      <h2>{{ proyecto.nombre }}</h2>
-      {% if proyecto.descripción %}
+                            </span>
+                            <span class="compact-board-tile-link-text-sub-name" title="jaguares">
+                                    {% if proyecto.descripción %}
         <p>{{ proyecto.descripción }}</p>
       {% endif %}
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-sm-12">
-     {% for sprint in sprints %}
-      <h3>{{ sprint.nombre }}</h3>
+                            </span>
+                          </span>
+                          <span class="compact-board-tile-link-options">
+                            <span class="compact-board-tile-link-options-unread js-unread" title="Hay actividad reciente en este tablero.">
+                            </span>
+                            <span class="icon-sm icon-star compact-board-tile-link-options-star js-star-board icon-star-active" title="Haga clic en este tablero para marcarlo como favorito. Aparecerá entre los primeros de su lista de tableros.">
+                            </span>
+                          </span>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="js-recent-boards">
+                <div>
+                  <div class="sidebar-section-header quiet js-sidebar-section-header bold">
+                    <span class="icon-sm icon-clock sidebar-section-header-icon">
+                    </span>
+                    <span class="sidebar-section-header-title">Tableros
+                      recientes
+                    </span>
+                    <span class="icon-sm icon-remove sidebar-section-header-toggle-icon dark-hover js-collapse-section">
+                    </span>
+                    <span class="icon-sm icon-add sidebar-section-header-toggle-icon dark-hover js-expand-section hide">
+                    </span>
+                  </div>
+                  <ul class="sidebar-boards-list js-board-list">
+                    <li class="compact-board-tile">
+                      <div class="compact-board-tile-wrapper">
+                        <a class="js-open-board compact-board-tile-link dark" href="#talonario-virtual">
+                          <span class="compact-board-tile-link-text details">
+                            <span class="compact-board-tile-link-text-name" title="Talonario Virtual">
+                                   {% for sprint in sprints %}
+      {{ sprint.nombre }}
         <p>{{ sprint.descripción }}</p>
      {% endfor %}
-    </div>
-  </div>
 
-
-</div>
-  <div class="row" id="kanban">
-     <div class ="column">
-     {% for estado in estados %}
-
-          <div class="col-md-2">
-            <div class="columnHeader">
-               <a class="" title="Column settings" ><i class="glyphicon glyphicon-wrench"></i></a>
-                <a title="Add card to column" class="pull-right" ><i class="glyphicon glyphicon-plus"></i></a>
-                <span >{{ estado.nombre }}</span>
+                            </span>
+                          </span>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="js-all-boards">
+                <div class="">
+                  <div class="sidebar-section-header quiet js-sidebar-section-header bold">
+                    <span class="icon-sm icon-board sidebar-section-header-icon">
+                    </span>
+                    <span class="sidebar-section-header-title">Mis tableros
+                    </span>
+                    <span class="icon-sm icon-remove sidebar-section-header-toggle-icon dark-hover js-collapse-section">
+                    </span>
+                    <span class="icon-sm icon-add sidebar-section-header-toggle-icon dark-hover js-expand-section hide">
+                    </span>
+                  </div>
+                  <ul class="sidebar-boards-list js-board-list">
+                    <li class="compact-board-tile">
+                      <div class="compact-board-tile-wrapper">
+                        <span class="compact-board-tile-background" style="background-color: #0079BF;">
+                        </span>
+                        <span class="compact-board-tile-fade">
+                        </span>
+                        <a class="js-open-board compact-board-tile-link dark" href="#">
+                          <span class="compact-board-tile-link-thumbnail" style="background-color: #0079BF;">
+                          </span>
+                          <span class="compact-board-tile-link-text details">
+                            <span class="compact-board-tile-link-text-name" title="BuhoLider">
+                              Tablero1
+                            </span>
+                          </span>
+                          <span class="compact-board-tile-link-options">
+                            <span class="compact-board-tile-link-options-unread js-unread" title="Hay actividad reciente en este tablero.">
+                            </span>
+                            <span class="icon-sm icon-star compact-board-tile-link-options-star js-star-board" title="Haga clic en este tablero para marcarlo como favorito. Aparecerá entre los primeros de su lista de tableros.">
+                            </span>
+                          </span>
+                        </a>
+                      </div>
+                    </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <div class="sidebar-section-header quiet js-sidebar-section-header bold">
+                        <a class="dark-hover" href="/jaguares1">
+                          <img class="sidebar-section-header-icon" src="" alt="jaguares">
+                            <span class="sidebar-section-header-title mod-clickable">
+                              jaguares
+                            </span>
+                            <span class="icon-sm icon-business-class sidebar-section-header-bc-icon hide js-has-business-class">
+                            </span>
+                          </a>
+                          <span class="icon-sm icon-remove sidebar-section-header-toggle-icon dark-hover js-collapse-section">
+                          </span>
+                          <span class="icon-sm icon-add sidebar-section-header-toggle-icon dark-hover js-expand-section hide">
+                          </span>
+                        </div>
+                        <ul class="sidebar-boards-list js-board-list">
+                          <li class="compact-board-tile">
+                            <div class="compact-board-tile-wrapper">
+                              <span class="compact-board-tile-background" style="background-color: #00AECC;">
+                              </span>
+                              <span class="compact-board-tile-fade">
+                              </span>
+                              <a class="js-open-board compact-board-tile-link dark" href="#">
+                                <span class="compact-board-tile-link-thumbnail" style="background-color: #00AECC;">
+                                </span>
+                                <span class="compact-board-tile-link-text details">
+                                  <span class="compact-board-tile-link-text-name" title="Sprint 1">
+                                    Sprint 1
+                                  </span>
+                                </span>
+                                <span class="compact-board-tile-link-options">
+                                  <span class="compact-board-tile-link-options-unread js-unread" title="Hay actividad reciente en este tablero.">
+                                  </span>
+                                  <span class="icon-sm icon-star compact-board-tile-link-options-star js-star-board" title="Haga clic en este tablero para marcarlo como favorito. Aparecerá entre los primeros de su lista de tableros.">
+                                  </span>
+                                </span>
+                              </a>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="js-board-drawer-buttons">
+                  <div>
+                    <a class="quiet-button js-add-board" href="#">Crear un
+                      tablero nuevo...
+                    </a>
+                    <a class="quiet-button js-pin" href="#">Mantener este menú
+                      siempre abierto.
+                    </a>
+                    <a class="quiet-button hide js-unpin" href="#">No mantener
+                      este menú abierto.
+                    </a>
+                    <a class="quiet-button js-open-closed-boards" href="#">Ver
+                      tableros cerrados...
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <ul class="ui-sortable cards" >
+          </div>
+          <p id="notification" style="display: none;">
+          </p>
 
-     {% for h in historiasU %}
-        {% for tarea in h.tareas %}{% if tarea.estado == estado %}
-  <div class="row">
-    <div class="col-sm-12">
-      <h3>{{ tarea.titulo }} {{h.titulo}}</h3>
-        <p>{{ tarea.descripción }}</p>
-    </div>
-  </div> {% endif %}
-     {% endfor %}
-     {% endfor %}
-            </ul>
+{% endblock %}
+
+{% block container %}
+  <div id="surface">
+    <div id="header">
+      <a class="header-logo js-home-via-logo" href="/" aria-label="Página de inicio de Trello">
+        <span class="header-logo-loading"></span>
+        <span class="header-logo-default"></span>
+      </a>
+      <div class="header-boards-button">
+        <a class="header-btn header-boards js-boards-menu" href="#">
+          <span class="header-btn-icon icon-lg icon-board light"></span>
+          <span class="header-btn-text">Tableros</span>
+        </a>
+      </div>
+      <div>
+        <a class="header-btn open-search-btn js-open-search-page" href="/search" title="Buscar tableros, tarjetas, miembros y equipos.">
+          <span class="header-btn-icon icon-lg icon-search light">
+          </span>
+        </a>
+        <div class="header-search">
+          <input class="header-search-input js-search-input js-disable-on-dialog" type="text" autocomplete="off" autocorrect="off" spellcheck="false" value="">
+            <span class="header-search-icon icon-lg icon-search light js-search-icon js-search-focus">
+            </span>
+            <span class="header-search-icon header-search-icon-close icon-lg icon-close light hide js-close-icon js-search-close">
+            </span>
+            <a class="header-search-icon header-search-icon-open icon-lg icon-external-link light hide js-open-button js-open-search-page" href="#">
+            </a>
+          </div>
         </div>
-     {% endfor %}
-     </div>
-  </div>
+        <div>
+          <a class="header-btn header-woof woof-hide" href="#">
+            <span class="taco-talk-small-icon">
+            </span>
+            <span class="header-btn-text">
+              <span class="left-arrow">
+              </span>
+              <span class="js-phrase">¡Nuevas funciones!
+              </span>
+            </span>
+          </a>
+        </div>
+        <div class="header-user">
+          <a class="header-btn js-open-add-menu" href="#" aria-label="Crear Tablero u  Organización">
+            <span class="header-btn-icon icon-lg icon-add light">
+            </span>
+          </a>
+          <a class="header-btn header-member js-open-header-member-menu" href="#" aria-label="Abrir menú de miembros">
+            <span class="member">
+              <img class="member-avatar" height="30" width="30" src="" srcset="" alt="{{persona.nombre}}({{persona.username}})" title="{{persona.nombre}}({{persona.username}})">
+            </span>
+            <span class="header-btn-text js-member-name">{{ persona.nombre }}</span>
+          </a>
+          <a class="header-btn js-open-header-info-menu" href="#" aria-label="Abrir el menú Información">
+              <span class="header-btn-icon icon-lg icon-information light"></span>
+          </a>
+          <a class="header-btn header-notifications js-open-header-notifications-menu" href="#" aria-label="Notificaciones"></a>
+        </div>
+      </div>
 
-{% endblock content %}
+<div id="content">
+  <div class="board-wrapper">
+    <div class="board-main-content">
+      <div class="board-header u-clearfix js-board-header">
+        <a class="board-header-btn board-header-btn-name no-edit board-header-btn-name-with-org-logo" href="#">
+          <img class="board-header-btn-name-org-logo" src="https://trello-logos.s3.amazonaws.com/ac8fd341e792471acdd9698cceff2634/30.png">
+            <span class="board-header-btn-text">Sprint 2
+            </span>
+          </a>
+          <a class="board-header-btn board-header-btn-org-name js-open-org-menu board-header-btn-without-icon" href="/jaguares1">
+            <span class="board-header-btn-text">jaguares
+            </span>
+          </a>
+          <div class="board-header-btns mod-left">
+            <a class="board-header-btn js-star-board board-header-btn-enabled" href="#" title="Haga clic en este tablero para marcarlo como favorito o quitarlo de favoritos. Los tableros marcados aparecerán entre los primeros de su lista de tableros." aria-label="Marcar o desmarcar tablero como favorito">
+              <span class="icon-sm icon-star board-header-btn-icon">
+              </span>
+            </a>
+            <a class="board-header-btn hide js-open-desc js-fill-desc" href="#">
+              <span class="icon-sm icon-description board-header-btn-icon">
+              </span>
+            </a>
+            <a id="permission-level" class="board-header-btn perms-btn js-change-vis" href="#" title="Privado. Solo visible para los miembros del tablero.">
+              <span class="board-header-btn-icon icon-sm icon-private">
+              </span>
+              <span class="board-header-btn-text">Privado
+              </span>
+            </a>
+          </div>
+          <div class="board-header-btns mod-right">
+            <a class="board-header-btn board-header-btn-filter-indicator hide js-filter-cards-indicator" href="#">
+              <span class="icon-sm icon-filter board-header-btn-icon">
+              </span>
+              <span class="board-header-btn-text u-text-underline">
+                El filtrado está activado.
+              </span>
+              <span class="icon-sm icon-close board-header-btn-icon-close js-filter-card-clear">
+              </span>
+            </a>
+            <a class="board-header-btn sub-btn hide js-board-header-subscribed" href="#">
+              <span class="icon-sm icon-subscribe board-header-btn-icon">
+              </span>
+              <span class="board-header-btn-text u-text-underline">
+                Suscrito
+              </span>
+            </a>
+            <a class="board-header-btn calendar-btn hide js-calendar" href="#">
+              <span class="icon-sm icon-calendar board-header-btn-icon">
+              </span>
+              <span class="board-header-btn-text u-text-underline">
+                    Calendario
+              </span>
+            </a>
+            <span class="js-plugin-header-btns">
+              <span class="board-header-plugin-btns hide">
+              </span>
+            </span>
+            <a class="board-header-btn mod-show-menu js-show-sidebar" href="#">
+              <span class="icon-sm icon-overflow-menu-horizontal board-header-btn-icon">
+              </span>
+              <span class="board-header-btn-text u-text-underline">
+                    Mostrar menú
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="board-canvas">
+          <div id="board" class="u-fancy-scrollbar js-no-higher-edits js-list-sortable ui-sortable">
+
+{% for estado in estados %}
+    <div class="js-list list-wrapper">
+      <div class="list js-list-content">
+        <div class="list-header js-list-header non-empty u-clearfix editable" attr="name">
+          <h2 class="list-header-name hide-on-edit js-list-name current">{{ estado.nombre }}</h2>
+          <p class="list-header-num-cards hide js-num-cards">8 tarjetas</p>
+          <div class="edit edit-heavy u-clearfix"><textarea class="field single-line" type="text"></textarea>
+          </div>
+          <a class="list-header-menu-icon icon-sm icon-dropdown-menu dark-hover js-open-list-menu" href="#"></a>
+        </div>
+        <div class="list-cards u-fancy-scrollbar u-clearfix js-list-cards js-sortable ui-sortable">
+          <div class="list-card js-member-droppable ui-droppable">
+            <div class="list-card-cover js-card-cover">
+            </div>
+            <div class="list-card-stickers-area hide">
+              <div class="stickers js-card-stickers">
+              </div>
+            </div>
+{% for h in historiasU %}
+    {% for tarea in h.tareas %}{% if tarea.estado == estado %}
+            <div class="list-card-details">
+              <div class="list-card-labels js-card-labels">
+              </div>
+              <a class="list-card-title js-card-name" href="#">
+                    <span class="card-short-id hide">{{ tarea.titulo }} {{h.titulo}}
+                    </span>
+        {{ tarea.descripción }}
+              </a>
+              <div class="badges">
+                <div title="Está suscrito a esta tarjeta." class="badge is-icon-only">
+                </div>
+                <div title="Esta tarjeta cuenta con una descripción." class="badge is-icon-only">
+                </div>
+                <div title="Elementos de la checklist" class="badge is-complete">
+                  <span class="badge-text">2/2</span>
+                </div>
+              </div>
+              <div class="list-card-members js-list-card-members">
+                <div class="member js-member-on-card-menu" data-idmem="527bb57fa7a4cd2a6100610c">
+                  <img class="member-avatar" height="30" width="30" src="" srcset="" alt="" title=""/>
+                </div>
+              </div>
+            </div>
+            <p class="list-card-dropzone">Soltar archivos que se van a cargar.</p>
+
+     {% endif %}
+     {% endfor %}
+     {% endfor %}
+          </div>
+        </div>
+      </div>
+      <a class="open-card-composer js-open-card-composer" href="#">Añadir una tarjeta...</a>
+    </div>
+{% endfor %}
+  <div class="js-add-list list-wrapper mod-add is-idle">
+    <form>
+      <span class="placeholder js-open-add-list">Añadir una lista...</span>
+                                                  <input class="list-name-input" type="text" name="name" placeholder="Añadir una lista..." autocomplete="off">
+                                                    <div class="edit-controls keep u-clearfix">
+                                                      <input class="primary confirm js-save-edit" type="submit" value="Guardar">
+                                                        <a class="icon-lg icon-close dark-hover cancel js-cancel-edit" href="#">
+                                                        </a>
+                                                      </div>
+                                                    </form>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="board-menu js-fill-board-menu hide">
+                                              <div class="board-menu-container">
+                                                <div class="board-menu-header js-board-menu-title is-board-menu-default-view is-in-frame">
+                                                  <a class="board-menu-header-back-button icon-lg icon-back js-pop-widget-view" href="#" title="Volver atrás.">
+                                                  </a>
+                                                  <h3 class="board-menu-header-title js-board-menu-title-text">
+                                                    Menú
+                                                  </h3>
+                                                  <a class="board-menu-header-close-button icon-lg icon-close js-hide-sidebar" href="#" title="Cerrar el menú del tablero.">
+                                                  </a>
+                                                  <hr class="board-menu-header-divider">
+                                                  </div>
+                                                  <div class="board-menu-content u-fancy-scrollbar js-board-menu-content-wrapper">
+                                                    <div class="board-menu-content-frame">
+                                                      <p class="error js-file-too-large" style="margin: 12px 0 6px; display:none;">
+                                                        El archivo es demasiado
+                                                        grande. El límite es de
+                                                        10&nbsp;MB.
+                                                      </p>
+                                                      <div class="board-menu-member-section js-list-members is-partial-row">
+                                                        <div class="u-clearfix js-list js-list-draggable-board-members">
+                                                          <div class="member ui-draggable">
+                                                            <img class="member-avatar" height="30" width="30" src="https://trello-avatars.s3.amazonaws.com/7039d7b4f249519744540ed90b27993a/30.png" srcset="https://trello-avatars.s3.amazonaws.com/7039d7b4f249519744540ed90b27993a/30.png 1x, https://trello-avatars.s3.amazonaws.com/7039d7b4f249519744540ed90b27993a/50.png 2x" alt="Daniel Saguez Tezanos Pinto (danielstp)" title="Daniel Saguez Tezanos Pinto (danielstp)">
+                                                              <span class="member-gold-badge" title="Este miembro tiene Trello Gold.">
+                                                              </span>
+                                                            </div>
+                                                            <div class="member ui-draggable">
+                                                              <span class="member-initials" title="Jhannet (jhannet)">
+                                                                J
+                                                              </span>
+                                                              <span class="member-gold-badge" title="Este miembro tiene Trello Gold.">
+                                                              </span>
+                                                            </div>
+                                                            <div class="member ui-draggable">
+                                                              <img class="member-avatar" height="30" width="30" src="https://trello-avatars.s3.amazonaws.com/9b3c5df4982165e3da8ef84f9f46cdab/30.png" srcset="https://trello-avatars.s3.amazonaws.com/9b3c5df4982165e3da8ef84f9f46cdab/30.png 1x, https://trello-avatars.s3.amazonaws.com/9b3c5df4982165e3da8ef84f9f46cdab/50.png 2x" alt="Pablo Azero (pabloazero)" title="Pablo Azero (pabloazero)">
+                                                                <span class="member-gold-badge" title="Este miembro tiene Trello Gold.">
+                                                                </span>
+                                                              </div>
+                                                              <div class="member ui-draggable">
+                                                                <img class="member-avatar" height="30" width="30" src="https://trello-avatars.s3.amazonaws.com/df3b1a3dac12fc4d7231e950d11e66eb/30.png" srcset="https://trello-avatars.s3.amazonaws.com/df3b1a3dac12fc4d7231e950d11e66eb/30.png 1x, https://trello-avatars.s3.amazonaws.com/df3b1a3dac12fc4d7231e950d11e66eb/50.png 2x" alt="Vaniamariselacatorceno (vaniamariselacatorceno)" title="Vaniamariselacatorceno (vaniamariselacatorceno)">
+                                                                  <span class="member-type admin" title="Este miembro es un administrador de este tablero.">
+                                                                  </span>
+                                                                  <span class="member-gold-badge" title="Este miembro tiene Trello Gold.">
+                                                                  </span>
+                                                                </div>
+                                                                <div class="member ui-draggable">
+                                                                  <img class="member-avatar" height="30" width="30" src="https://trello-avatars.s3.amazonaws.com/74e3b9618d3d70eb93a85eb3918a6392/30.png" srcset="https://trello-avatars.s3.amazonaws.com/74e3b9618d3d70eb93a85eb3918a6392/30.png 1x, https://trello-avatars.s3.amazonaws.com/74e3b9618d3d70eb93a85eb3918a6392/50.png 2x" alt="jmejia (jpmejia)" title="jmejia (jpmejia)">
+                                                                    <span class="member-gold-badge" title="Este miembro tiene Trello Gold.">
+                                                                    </span>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                              <div class="board-menu-member-section js-list-team-members is-hidden is-partial-row">
+                                                                <div class="board-menu-member-section-header js-heading is-hidden">
+                                                                  Miembros del
+                                                                  equipo
+                                                                </div>
+                                                                <div class="u-clearfix js-list js-list-draggable-board-members">
+                                                                </div>
+                                                              </div>
+                                                              <div class="board-menu-member-section js-list-invited-members is-hidden is-partial-row">
+                                                                <div class="board-menu-member-section-header js-heading is-hidden">
+                                                                  Miembros
+                                                                  invitados
+                                                                </div>
+                                                                <div class="u-clearfix js-list js-list-draggable-board-members">
+                                                                </div>
+                                                              </div>
+                                                              <div class="board-menu-member-section js-list-non-team-members is-hidden is-partial-row">
+                                                                <div class="board-menu-member-section-header js-heading is-hidden">
+                                                                  Miembros que no
+                                                                  pertenecen al
+                                                                  equipo
+                                                                </div>
+                                                                <div class="u-clearfix js-list js-list-draggable-board-members">
+                                                                </div>
+                                                              </div>
+                                                              <div class="board-menu-member-section js-list-observers is-hidden is-partial-row">
+                                                                <div class="board-menu-member-section-header js-heading is-hidden">
+                                                                  Observadores
+                                                                </div>
+                                                                <div class="u-clearfix js-list js-list-draggable-board-members">
+                                                                </div>
+                                                              </div>
+                                                              <div class="board-menu-member-section js-deactivated-members is-hidden is-partial-row">
+                                                                <div class="board-menu-member-section-header js-heading is-hidden">
+                                                                  Miembros
+                                                                  desactivados
+                                                                </div>
+                                                                <div class="u-clearfix js-list js-list-draggable-board-members">
+                                                                </div>
+                                                              </div>
+                                                              <div class="board-members-extras-button u-clearfix js-show-extra-members-button">
+                                                                <a class="quiet-button js-show-extra-members" href="#">
+                                                                  Mostrar 0
+                                                                  miembros más
+                                                                </a>
+                                                              </div>
+                                                              <div class="board-members-extras-button u-clearfix js-hide-extra-members-button">
+                                                                <a class="quiet-button js-hide-extra-members" href="#">
+                                                                  Mostrar menos
+                                                                  miembros
+                                                                </a>
+                                                              </div>
+                                                              <a class="button-link mod-full js-open-manage-board-members" href="#">
+                                                                <span class="icon-sm icon-add-member">
+                                                                </span>
+                                                                Añadir
+                                                                miembros...
+                                                              </a>
+                                                              <hr>
+                                                                <ul class="board-menu-navigation">
+                                                                  <li class="board-menu-navigation-item mod-background">
+                                                                    <a class="board-menu-navigation-item-link js-change-background" href="#">
+                                                                      <span class="board-menu-navigation-item-link-icon js-fill-background-preview" style="background-image: url(&quot;undefined&quot;); background-color: rgb(137, 96, 158);">
+                                                                      </span>
+                                                                      Cambiar
+                                                                      fondo
+                                                                    </a>
+                                                                  </li>
+                                                                  <li class="board-menu-navigation-item">
+                                                                    <a class="board-menu-navigation-item-link js-open-card-filter" href="#">
+                                                                      <span class="icon-sm icon-filter board-menu-navigation-item-link-icon">
+                                                                      </span>
+                                                                      Filtrar
+                                                                      tarjetas
+                                                                    </a>
+                                                                  </li>
+                                                                  <li class="board-menu-navigation-item">
+                                                                    <a class="board-menu-navigation-item-link js-open-power-ups" href="#">
+                                                                      <span class="icon-sm icon-power-up board-menu-navigation-item-link-icon">
+                                                                      </span>
+                                                                      
+                                                                      Potenciadores<span class="board-menu-navigation-item-link-count js-enabled-power-up-count">
+                                                                      </span>
+                                                                    </a>
+                                                                  </li>
+                                                                  <li class="board-menu-navigation-item">
+                                                                    <a class="board-menu-navigation-item-link js-open-stickers" href="#">
+                                                                      <span class="icon-sm icon-sticker board-menu-navigation-item-link-icon">
+                                                                      </span>
+                                                                      Pegatinas
+                                                                    </a>
+                                                                  </li>
+                                                                  <li class="board-menu-navigation-item">
+                                                                    <a class="board-menu-navigation-item-link js-open-more" href="#">
+                                                                      <span class="icon-sm icon-overflow-menu-horizontal board-menu-navigation-item-link-icon">
+                                                                      </span>
+                                                                      Más
+                                                                    </a>
+                                                                  </li>
+                                                                </ul>
+                                                                <hr>
+                                                                  <a class="board-menu-section-header js-open-activity" href="#">
+                                                                    <span class="board-menu-section-header-icon icon-lg icon-activity">
+                                                                    </span>
+                                                                    <span class="board-menu-section-header-title">
+                                                                      Actividad
+                                                                    </span>
+                                                                    <span class="board-menu-section-header-count js-unread-activity-count">
+                                                                      39
+                                                                    </span>
+                                                                  </a>
+                                                                  <div class="js-menu-action-list">
+                                                                    <div class="phenom mod-other-type">
+                                                                      <div class="phenom-creator">
+                                                                        <div class="member js-show-mem-menu" idmember="565f5c640efb1b80a5ce357f">
+                                                                          <span class="member-initials" title="Jhannet (jhannet)">
+                                                                            J
+                                                                          </span>
+                                                                          <span class="member-gold-badge" title="Este miembro tiene Trello Gold.">
+                                                                          </span>
+                                                                        </div>
+                                                                      </div>
+                                                                      <div class="phenom-desc">
+                                                                        <span class="inline-member js-show-mem-menu" idmember="565f5c640efb1b80a5ce357f">
+                                                                          <span class="u-font-weight-bold">
+                                                                            
+                                                                            Jhannet
+                                                                          </span>
+                                                                        </span>
+                                                                        ha
+                                                                        añadido
+                                                                        a 
+                                                                        <span class="inline-member js-show-mem-menu" idmember="527bb57fa7a4cd2a6100610c">
+                                                                          <span class="u-font-weight-bold">
+                                                                            
+                                                                            jmejia
+                                                                          </span>
+                                                                        </span>
+                                                                        a <a class="action-card" href="https://trello.com/c/4oJ1LnMy">
+                                                                          H7:
+                                                                          Como
+                                                                          
+                                                                          administrador de proyecto quiero asignar un
+                                                                          responsable para realizar una tarea creada,
+                                                                          talque al ingresar a la tarea se puede ver el
+                                                                          responsable asignado a la tarea
+                                                                        </a>
+                                                                      </div>
+                                                                      <p class="phenom-meta quiet">
+                                                                        <a class="date js-hide-on-sending js-highlight-link" dt="2016-02-24T23:15:48.236Z" href="/c/4oJ1LnMy/9-h7-como-administrador-de-proyecto-quiero-asignar-un-responsable-para-realizar-una-tarea-creada-talque-al-ingresar-a-la-tarea-se-#action-56ce39a40b91a1504b4b7f4e" title="24 de febrero de 2016 18:13">
+                                                                          24 de
+                                                                          feb. a
+                                                                          las
+                                                                          18:13
+                                                                        </a>
+                                                                        <span class="js-spinner hide">
+                                                                          <span class="spinner spinner--inline mod-left small">
+                                                                          </span>
+                                                                          
+                                                                          Enviando…
+                                                                        </span>
+                                                                      </p>
+                                                                    </div>
+                                                                    
+                                                                                        <a class="show-more js-fill-activity-button js-open-activity" href="#">
+                                                                                          Ver toda la actividad que no
+                                                                                          haya leído (39)...
+                                                                                        </a>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
+  <div class="window-overlay">
+    <div class="window">
+      <a class="focus-dummy" href="#">
+      </a>
+      <div class="window-wrapper js-tab-parent"></div>
+    </div>
+  </div>
+  <div class="pop-over"></div>
+  <div class="tooltip-container"></div>
+  <div id="clipboard-container"></div>
+</div>
+
+
+{% endblock %}
 
 
 {% block css %}
-{{ block.super }}
-    <link href="{% static '/css/themes/trello.css' %}" rel="stylesheet">
+    <link href="{% static '/static/css/themes/trello.css' %}" rel="stylesheet">
 {% endblock %}
