@@ -347,6 +347,8 @@
           <a class="list-header-menu-icon icon-sm icon-dropdown-menu dark-hover js-open-list-menu" href="#"></a>
         </div>
         <div class="list-cards u-fancy-scrollbar u-clearfix js-list-cards js-sortable ui-sortable">
+{% for h in historiasU %}
+    {% for tarea in h.tareas %}{% if tarea.estado == estado %}
           <div class="list-card js-member-droppable ui-droppable">
             <div class="list-card-cover js-card-cover">
             </div>
@@ -354,8 +356,6 @@
               <div class="stickers js-card-stickers">
               </div>
             </div>
-{% for h in historiasU %}
-    {% for tarea in h.tareas %}{% if tarea.estado == estado %}
             <div class="list-card-details">
               <div class="list-card-labels js-card-labels">
               </div>
@@ -374,36 +374,37 @@
                 </div>
               </div>
               <div class="list-card-members js-list-card-members">
-                <div class="member js-member-on-card-menu" data-idmem="527bb57fa7a4cd2a6100610c">
+                <div class="member js-member-on-card-menu" data-idmem="">
                   <img class="member-avatar" height="30" width="30" src="" srcset="" alt="" title=""/>
                 </div>
               </div>
             </div>
             <p class="list-card-dropzone">Soltar archivos que se van a cargar.</p>
+          </div>
 
      {% endif %}
      {% endfor %}
      {% endfor %}
-          </div>
         </div>
-      </div>
       <a class="open-card-composer js-open-card-composer" href="#">Añadir una tarjeta...</a>
+      </div>
     </div>
 {% endfor %}
   <div class="js-add-list list-wrapper mod-add is-idle">
     <form>
       <span class="placeholder js-open-add-list">Añadir una lista...</span>
-                                                  <input class="list-name-input" type="text" name="name" placeholder="Añadir una lista..." autocomplete="off">
-                                                    <div class="edit-controls keep u-clearfix">
-                                                      <input class="primary confirm js-save-edit" type="submit" value="Guardar">
-                                                        <a class="icon-lg icon-close dark-hover cancel js-cancel-edit" href="#">
-                                                        </a>
-                                                      </div>
-                                                    </form>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
+      <input class="list-name-input" type="text" name="name" placeholder="Añadir una lista..." autocomplete="off"/>
+      <div class="edit-controls keep u-clearfix">
+        <input class="primary confirm js-save-edit" type="submit" value="Guardar"/>
+        <a class="icon-lg icon-close dark-hover cancel js-cancel-edit" href="#">
+        </a>
+      </div>
+    </form>
+  </div>
+
+    </div>
+  </div>
+</div>
 
                                             <div class="board-menu js-fill-board-menu hide">
                                               <div class="board-menu-container">
@@ -651,3 +652,9 @@
 {% block css %}
     <link href="{% static '/static/css/themes/trello.css' %}" rel="stylesheet">
 {% endblock %}
+
+    {% block javascript %}
+      {{ block.super }}
+      <script src="{% static '/static/js/go.js' %}"></script>
+
+    {% endblock javascript %}
