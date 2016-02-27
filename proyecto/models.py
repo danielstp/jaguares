@@ -180,7 +180,7 @@ class Tarea(models.Model):
     progreso = models.DecimalField('Progreso (de 0 a 100)',default=0,max_digits=10,decimal_places=2)
     documento = models.ForeignKey(Documento,null=True,blank=True)
     miembro = models.ForeignKey(Miembro,null=True,blank=True, verbose_name='Responsable')
-    estado = models.ForeignKey(Estado,default=3)
+    estado = models.ForeignKey(Estado,default=1)
     historiaUs = models.ForeignKey(HistoriaUsuario)
 
     def __str__(self):

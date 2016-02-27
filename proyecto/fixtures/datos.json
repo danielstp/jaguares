@@ -30,7 +30,7 @@
   "model": "proyecto.estado",
   "pk": 1,
   "fields": {
-    "nombre": "Backlog",
+    "nombre": "ToDo",
     "descripción": "Estado Inicial"
   }
 },
@@ -38,24 +38,16 @@
   "model": "proyecto.estado",
   "pk": 2,
   "fields": {
-    "nombre": "Done",
-    "descripción": "Terminado"
+    "nombre": "Doing",
+    "descripción": "En progreso"
   }
 },
 {
   "model": "proyecto.estado",
   "pk": 3,
   "fields": {
-    "nombre": "TODO",
-    "descripción": "Por hacer"
-  }
-},
-{
-  "model": "proyecto.estado",
-  "pk": 4,
-  "fields": {
-    "nombre": "In Process",
-    "descripción": "Trabajando en esto"
+    "nombre": "Done",
+    "descripción": "Terminado"
   }
 },
 {
