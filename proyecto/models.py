@@ -176,9 +176,9 @@ class HistoriaUsuarioSprint(models.Model):
 class Tarea(models.Model):
     titulo = models.CharField(_(u'Nombre'),max_length=200,default='')
     descripción = models.TextField(_(u'descripción'),default='')
-    progreso = models.DecimalField('Progreso (de 0 a 100))',default=0,max_digits=10,decimal_places=2)
+    progreso = models.DecimalField('Progreso (de 0 a 100)',default=0,max_digits=10,decimal_places=2)
     documento = models.ForeignKey(Documento,null=True,blank=True)
-    miembro = models.ForeignKey(Miembro,null=True,blank=True)
+    miembro = models.ForeignKey(Miembro,null=True,blank=True, verbose_name='Responsable')
     estado = models.ForeignKey(Estado,default=3)
     historiaUs = models.ForeignKey(HistoriaUsuario)
 
