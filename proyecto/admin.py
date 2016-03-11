@@ -92,10 +92,12 @@ class CriterioAceptacionInline(admin.TabularInline):
     extra = 1
 
 class SprintAdmin(admin.ModelAdmin):
-    list_display = ('nombre','proyecto')
+    list_display = ('nombre','proyecto', 'tablero')
     list_filter = ['nombre','proyecto']
     inlines = [HistoriaUsuarioSprintInline,ComentarioSprintInline,]
-
+    def tablero(self, obj):
+        return ('<a target="_blank" href="/proyecto/%s/kanban/%s">%s</a>') % (obj.proyecto.nombre, obj.id, 'ver tablero')
+    tablero.allow_tags = True
 
 class HistoriaUsuarioAdmin(admin.ModelAdmin):
     list_display = ('titulo','fechaElaboracion','personaElaboro','persona','proyecto','prioridad')
