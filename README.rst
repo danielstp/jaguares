@@ -1,7 +1,12 @@
 Jaguares
 ==============================
 
-Experimento de Django + AngularJS
+git - github
+Trello
+python
+django
+javascript
+css
 
 
 LICENSE: GPLv3
