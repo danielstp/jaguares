@@ -273,7 +273,7 @@
       <div class="board-header u-clearfix js-board-header">
         <a class="board-header-btn board-header-btn-name no-edit board-header-btn-name-with-org-logo" href="#">
           <img class="board-header-btn-name-org-logo" src="https://trello-logos.s3.amazonaws.com/ac8fd341e792471acdd9698cceff2634/30.png">
-            <span class="board-header-btn-text">Sprint 2
+            <span class="board-header-btn-text" style="color:black" > {{ sprint.nombre  }}
             </span>
           </a>
           <a class="board-header-btn board-header-btn-org-name js-open-org-menu board-header-btn-without-icon" href="/jaguares1">
@@ -368,12 +368,8 @@
                 <div title="Esta tarjeta cuenta con una descripción." class="badge is-icon-only">
                 </div>
                 <div title="Elementos de la checklist" class="badge is-complete">
-                  <span class="badge-text">2/2</span>
-                </div>
-              </div>
-              <div class="list-card-members js-list-card-members">
-                <div class="member js-member-on-card-menu" data-idmem="">
-                  <img class="member-avatar" height="30" width="30" src="" srcset="" alt="" title=""/>
+                  <span class="badge-text">Prioridad: {{ hus.historiaUsuario.prioridad  }}</span>
+
                 </div>
               </div>
             </div>
@@ -410,6 +406,7 @@
               <a class="list-card-title js-card-name" href="#">
                     <span class="card-short-id hide">{{ tarea.titulo }} {{h.historiaUsuario.titulo}}
                     </span>
+        {{ tarea.titulo }} <br>
         {{ tarea.descripción }}
               </a>
               <div class="badges">
@@ -418,30 +415,23 @@
                 <div title="Esta tarjeta cuenta con una descripción." class="badge is-icon-only">
                 </div>
                 <div title="Elementos de la checklist" class="badge is-complete">
-                  <span class="badge-text">2/2</span>
-                </div>
-              </div>
-              <div class="list-card-members js-list-card-members">
-                <div class="member js-member-on-card-menu" data-idmem="">
-                  <img class="member-avatar" height="30" width="30" src="" srcset="" alt="" title=""/>
+                  <span class="badge-text">progreso : {{ tarea.progreso }}</span>
                 </div>
               </div>
             </div>
-            <p class="list-card-dropzone">Soltar archivos que se van a cargar.</p>
           </div>
 
      {% endif %}
      {% endfor %}
      {% endfor %}
         </div>
-      <a class="open-card-composer js-open-card-composer" href="#">Añadir una tarjeta...</a>
       </div>
     </div>
 {% endfor %}
   <div class="js-add-list list-wrapper mod-add is-idle">
     <form>
-      <span class="placeholder js-open-add-list">Añadir una lista...</span>
-      <input class="list-name-input" type="text" name="name" placeholder="Añadir una lista..." autocomplete="off"/>
+      <span class="placeholder js-open-add-list"></span>
+      <input class="list-name-input" type="text" name="name" placeholder="" autocomplete="off"/>
       <div class="edit-controls keep u-clearfix">
         <input class="primary confirm js-save-edit" type="submit" value="Guardar"/>
         <a class="icon-lg icon-close dark-hover cancel js-cancel-edit" href="#">
@@ -573,7 +563,6 @@
                                                                       Cambiar
                                                                       fondo
                                                                     </a>
-                                                                  </li>
                                                                   <li class="board-menu-navigation-item">
                                                                     <a class="board-menu-navigation-item-link js-open-card-filter" href="#">
                                                                       <span class="icon-sm icon-filter board-menu-navigation-item-link-icon">

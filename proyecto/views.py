@@ -26,7 +26,7 @@ def kanban(request, nombre, sprintId):
     for h in hu:
         h.tareas = Tarea.objects.filter(historiaUs = h.pk)
     es = Estado.objects.all()
-    return render(request, 'proyecto/proyecto_kanban.html', {'proyecto':p, 'sprints':s, 'historiasU':hu,'estados':es, 'historiasUsuariosSprint' : historiasUsuariosSprint})
+    return render(request, 'proyecto/proyecto_kanban.html', {'proyecto':p, 'sprints':s, 'historiasU':hu,'estados':es, 'historiasUsuariosSprint' : historiasUsuariosSprint, 'sprint' : sprint })
 
 
 class ProyectoDetailView(LoginRequiredMixin, DetailView):
