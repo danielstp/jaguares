@@ -6,12 +6,15 @@ from django.core.validators     import RegexValidator
 from datetime                   import datetime
 from polymorphic.models         import PolymorphicModel
 
-
 class Comentario(PolymorphicModel):
+    
     def resumen(self):
         return self.comentario[:120]
+    
     comentario = models.TextField()
-    fecha = models.DateTimeField(_(u'Fecha del comentario'), default=datetime.now(), editable=False)
+    fecha = models.DateTimeField(_(u'Fecha del comentario'),
+                                default=datetime.now(), 
+                                editable=False)
 
     def __str__(self):
         return self.resumen()
@@ -51,8 +54,10 @@ class Prioridad(models.Model):
     nombre = models.CharField(_(u'Estado'), max_length=30, default='')
     descripción = models.CharField(_(u'descripción'), max_length=250, default='')
     valor = models.IntegerField(default = 0)
+    
     def __str__(self):
         return self.nombre
+    
     class Meta:
         verbose_name_plural = _(u'Prioridades')
 
@@ -108,7 +113,6 @@ class Sprint(models.Model):
 
     def __str__(self):
         return ('Sprint '+ self.nombre) 
-            # + ' (Duracion: %d dias)') % self.duración)
 
 
 class ComentarioSprint(Comentario):
