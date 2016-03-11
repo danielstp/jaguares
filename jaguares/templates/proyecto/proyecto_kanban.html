@@ -214,7 +214,7 @@
     <div id="header">
       <a class="header-logo js-home-via-logo" href="/" aria-label="Página de inicio de Trello">
         <span class="header-logo-loading"></span>
-        <span class="header-logo-default"></span>
+        <!--<span class="header-logo-default"></span>-->
       </a>
       <div class="header-boards-button">
         <a class="header-btn header-boards js-boards-menu" href="#">
@@ -334,8 +334,56 @@
           </div>
         </div>
         <div class="board-canvas">
-          <div id="board" class="u-fancy-scrollbar js-no-higher-edits js-list-sortable ui-sortable">
+         <div id="board" class="u-fancy-scrollbar js-no-higher-edits js-list-sortable ui-sortable">
 
+<div class="js-list list-wrapper">
+      <div class="list js-list-content">
+        <div class="list-header js-list-header non-empty u-clearfix editable" attr="name">
+          <h2 class="list-header-name hide-on-edit js-list-name current">Sprint Backlog</h2>
+          <p class="list-header-num-cards hide js-num-cards">8 tarjetas</p>
+          <div class="edit edit-heavy u-clearfix"><textarea class="field single-line" type="text"></textarea>
+          </div>
+          <a class="list-header-menu-icon icon-sm icon-dropdown-menu dark-hover js-open-list-menu" href="#"></a>
+        </div>
+        <div class="list-cards u-fancy-scrollbar u-clearfix js-list-cards js-sortable ui-sortable">
+  {% for hus in historiasUsuariosSprint %}
+      <div class="list-card js-member-droppable ui-droppable">
+            <div class="list-card-cover js-card-cover">
+            </div>
+            <div class="list-card-stickers-area hide">
+              <div class="stickers js-card-stickers">
+              </div>
+            </div>
+            <div class="list-card-details">
+              <div class="list-card-labels js-card-labels">
+              </div>
+              <a class="list-card-title js-card-name" href="#">
+                    <span class="card-short-id hide">{{ hus.historiaUsuario.titulo }}
+                    </span>
+        {{ hus.historiaUsuario.descripción }}
+              </a>
+              <div class="badges">
+                <div title="Está suscrito a esta tarjeta." class="badge is-icon-only">
+                </div>
+                <div title="Esta tarjeta cuenta con una descripción." class="badge is-icon-only">
+                </div>
+                <div title="Elementos de la checklist" class="badge is-complete">
+                  <span class="badge-text">2/2</span>
+                </div>
+              </div>
+              <div class="list-card-members js-list-card-members">
+                <div class="member js-member-on-card-menu" data-idmem="">
+                  <img class="member-avatar" height="30" width="30" src="" srcset="" alt="" title=""/>
+                </div>
+              </div>
+            </div>
+            <p class="list-card-dropzone">Soltar archivos que se van a cargar.</p>
+          </div>
+
+  {% endfor %}   
+  </div>
+</div>
+</div>
 {% for estado in estados %}
     <div class="js-list list-wrapper">
       <div class="list js-list-content">
@@ -347,8 +395,8 @@
           <a class="list-header-menu-icon icon-sm icon-dropdown-menu dark-hover js-open-list-menu" href="#"></a>
         </div>
         <div class="list-cards u-fancy-scrollbar u-clearfix js-list-cards js-sortable ui-sortable">
-{% for h in historiasU %}
-    {% for tarea in h.tareas %}{% if tarea.estado == estado %}
+{% for h in historiasUsuariosSprint %}
+    {% for tarea in h.historiaUsuario.tarea_set.all %}{% if tarea.estado == estado %}
           <div class="list-card js-member-droppable ui-droppable">
             <div class="list-card-cover js-card-cover">
             </div>
@@ -360,7 +408,7 @@
               <div class="list-card-labels js-card-labels">
               </div>
               <a class="list-card-title js-card-name" href="#">
-                    <span class="card-short-id hide">{{ tarea.titulo }} {{h.titulo}}
+                    <span class="card-short-id hide">{{ tarea.titulo }} {{h.historiaUsuario.titulo}}
                     </span>
         {{ tarea.descripción }}
               </a>

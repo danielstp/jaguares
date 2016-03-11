@@ -21,7 +21,7 @@ urlpatterns = [
     ),
 
     url(
-        regex=r'^(?P<nombre>[\w.@+-]+)/kanban/$',
+        regex=r'^(?P<nombre>[\w.@+-]+)/kanban/(?P<sprintId>[0-9]+)$',
         view=views.kanban,
         name='kanban'
     ),

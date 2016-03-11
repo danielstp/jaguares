@@ -24,9 +24,9 @@ from .models import Estado
 from .models import Prioridad
 
 
-class HistoriaUsuarioSprintInline(NestedStackedInline):
+class HistoriaUsuarioSprintInline(admin.TabularInline):
     model = HistoriaUsuarioSprint
-    extra = 1
+    extra = 0
     verbose_name = "Sprint - HU :"
 
 

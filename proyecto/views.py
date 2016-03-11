@@ -12,15 +12,21 @@ from braces.views import LoginRequiredMixin
 
 from .models import Proyecto, Sprint, HistoriaUsuario, Estado, Tarea, HistoriaUsuarioSprint
 
-def kanban(request, nombre):
+def kanban(request, nombre, sprintId):
     p = Proyecto.objects.get(nombre=nombre)
     s = Sprint.objects.filter(proyecto=p.pk)
     #sb = HistoriaUsuarioSprint.filter(sprint=s.pk)
+    
+    sprint = Sprint.objects.get(pk=sprintId);
+    historiasUsuariosSprint = sprint.historiausuariosprint_set.all();
+    
+
+
     hu = HistoriaUsuario.objects.filter(proyecto=p.pk)
     for h in hu:
         h.tareas = Tarea.objects.filter(historiaUs = h.pk)
     es = Estado.objects.all()
-    return render(request, 'proyecto/proyecto_kanban.html', {'proyecto':p, 'sprints':s, 'historiasU':hu,'estados':es})
+    return render(request, 'proyecto/proyecto_kanban.html', {'proyecto':p, 'sprints':s, 'historiasU':hu,'estados':es, 'historiasUsuariosSprint' : historiasUsuariosSprint})
 
 
 class ProyectoDetailView(LoginRequiredMixin, DetailView):
