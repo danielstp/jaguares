@@ -45,7 +45,7 @@
                 <div class="alert alert-success" role="alert"> 
                     <strong>{{ hus.historiaUsuario.titulo  }}</strong> 
                     {% if hus.historiaUsuario.estaTerminado %}
-                    <span style="float:right" class="label label-success"> DONE </span>
+                    <span style="float:right" class="label label-success"> TERMINADO </span>
                     {% else %}
                     <span style="float:right" class="label label-warning"> EN PROGRESO </span>
                     {% endif %}
@@ -102,7 +102,7 @@
           <option value="{{ est.id }}">{{ est.nombre  }} </option>
           {% endfor %}
       </select><br>
-      <button type="submit" class="btn btn-primary"> Registrar  </button>
+      <button type="submit" class="btn btn-primary"> OK  </button>
       </form>  
   </div>
             </div>
