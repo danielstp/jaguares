@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 from braces.views import LoginRequiredMixin
-from .models import Proyecto, Sprint, HistoriaUsuario, Estado, Tarea, HistoriaUsuarioSprint
+from .models import Proyecto, Sprint, HistoriaUsuario, Estado, Tarea, HistoriaUsuarioSprint, Miembro
 
 def kanban(request, nombre, sprintId):
     p = Proyecto.objects.get(nombre=nombre)
@@ -41,8 +41,11 @@ def tablero(request, nombre, sprintId):
         else:  
             estado = request.POST.get('tarea_estado')
             tarea = request.POST.get('tarea_id')
+            responsable = request.POST.get('tarea_miembro')
+            responsable = Miembro.objects.get(pk=responsable)
             tarea = Tarea.objects.get(pk=tarea)
             tarea.estado = Estado.objects.get(pk=estado)
+            tarea.miembro = responsable
             tarea.save()
     
     return render(request, 'proyecto/tablero.html', {

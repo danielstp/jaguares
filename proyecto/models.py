@@ -148,6 +148,8 @@ class HistoriaUsuario(models.Model):
     
     def estaTerminado(self):
         tareas = self.tarea_set.all() 
+        if len(tareas) == 0:
+            return False
         for tarea in tareas:
             if tarea.estado.nombre != 'Done':
                 return False
