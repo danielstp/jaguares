@@ -137,6 +137,30 @@
   }
 },
 {
+  "model": "proyecto.tarea",
+  "pk": 1,
+  "fields": {
+    "titulo":"Tarea 1",
+    "descripci\u00f3n": "tarea de desarrollo",
+    "progreso": 0.0,
+    "miembro":1,
+    "estado": 1,
+    "historiaUs": 1
+    }
+},
+{
+  "model": "proyecto.tarea",
+  "pk":2,
+  "fields": {
+    "titulo":"Tarea 2",
+    "descripci\u00f3n": "tarea de qa",
+    "progreso": 0.0,
+    "miembro":1,
+    "estado": 1,
+    "historiaUs": 1
+   }
+},
+{
   "model": "users.user",
   "pk": 1,
   "fields": {
