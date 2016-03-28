@@ -5,7 +5,6 @@
 
 {% block contenido %}
 
- <h1> {{ test }} </h1>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-primary">
@@ -29,9 +28,28 @@
             <div class="panel-body">
             {% for hus in sprint.historiausuariosprint_set.all %}
                 <div class="alert alert-success" role="alert"> 
-                <strong>{{ hus.historiaUsuario.titulo  }}</strong> <br>
-                {{ hus.historiaUsuario.descripción }} <br>
-                Prioridad : {{ hus.historiaUsuario.prioridad  }}
+                    <strong>{{ hus.historiaUsuario.titulo  }}</strong> <br>
+                    {{ hus.historiaUsuario.descripción }} <br>
+                    Prioridad : {{ hus.historiaUsuario.prioridad  }}
+                    <br>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="collapse" data-target="#historiausuario-{{ hus.historiaUsuario.id }}"> 
+                        <span class="glyphicon glyphicon-plus"> </span>
+                    </button> 
+                    <div id="historiausuario-{{ hus.historiaUsuario.id }}" class="collapse">
+                                          
+      <form action="" method="post" >
+      {% csrf_token %} 
+      <input type="hidden" name="hu_id" value="{{ hus.historiaUsuario.id }}">
+      <label> Nombre:  </label>
+      <input class="form-control" type="text" name="hu_nombre">
+      <label> Descripcion </label>
+      <textarea class="form-control" name="hu_descripcion"> </textarea>
+      <br> 
+      <button type="submit" class="btn btn-success"> Registrar  </button>
+      </form>  
+
+
+                    </div>  
                 </div>
             {% endfor %}    
             </div>
@@ -48,7 +66,7 @@
             <div class="alert alert-info">
                <strong>{{ tarea.titulo }} </strong>
                <p> {{ tarea.descripción }}</p>
-<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#tarea-edit-{{ tarea.id  }}">
+<button type="button" class="btn btn-info btn-sm" data-toggle="collapse" data-target="#tarea-edit-{{ tarea.id  }}">
 <span class="glyphicon glyphicon-edit">
 </button>
   <div id="tarea-edit-{{ tarea.id }}" class="collapse">
