@@ -4,6 +4,44 @@
 {% block title %} Tablero Scrum {% endblock %}
 
 {% block contenido %} 
-  
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">{{ proyecto.nombre }}</div>
+            <div class="panel-body"> {{ proyecto.descripción }} </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">{{ sprint.nombre }}</div>
+            <div class="panel-body"> {{ sprint.descripción }}
+            
+            </div>
+        </div>
+    </div>
+</div> 
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">Sprint Backlog</div>
+            <div class="panel-body">
+            {% for hus in sprint.historiausuariosprint_set.all %}
+                <div class="alert alert-success" role="alert"> 
+                <strong>{{ hus.historiaUsuario.titulo  }}</strong> <br>
+                {{ hus.historiaUsuario.descripción }} <br>
+                Prioridad : {{ hus.historiaUsuario.prioridad  }}
+                </div>
+            {% endfor %}    
+            </div>
+        </div>
+    </div>
+    {% for estado in estados %}
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ estado.nombre }}</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock  %}
 

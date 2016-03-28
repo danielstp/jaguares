@@ -27,8 +27,13 @@ def kanban(request, nombre, sprintId):
                 })
 def tablero(request, nombre, sprintId):
     proyecto = Proyecto.objects.get(nombre=nombre)
+    s = Sprint.objects.filter(proyecto=proyecto.pk)
+    sprint = Sprint.objects.get(pk=sprintId)
+    estados = Estado.objects.all()
     return render(request, 'proyecto/tablero.html', {
-         'proyecto' : proyecto
+         'proyecto' : proyecto,
+         'sprint' : sprint,
+         'estados' : estados
     })
 
 
