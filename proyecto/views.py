@@ -27,13 +27,21 @@ def kanban(request, nombre, sprintId):
                 })
 def tablero(request, nombre, sprintId):
     proyecto = Proyecto.objects.get(nombre=nombre)
-    s = Sprint.objects.filter(proyecto=proyecto.pk)
     sprint = Sprint.objects.get(pk=sprintId)
     estados = Estado.objects.all()
+    test = 'get';
+    if request.method == 'POST':
+        estado = request.POST.get('tarea_estado')
+        tarea = request.POST.get('tarea_id')
+        tarea = Tarea.objects.get(pk=tarea)
+        tarea.estado = Estado.objects.get(pk=estado)
+        tarea.save()
+    
     return render(request, 'proyecto/tablero.html', {
          'proyecto' : proyecto,
          'sprint' : sprint,
-         'estados' : estados
+         'estados' : estados,
+         'test' : test
     })
 
 

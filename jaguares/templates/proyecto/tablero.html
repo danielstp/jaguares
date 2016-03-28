@@ -3,7 +3,9 @@
 {% load i18n %}
 {% block title %} Tablero Scrum {% endblock %}
 
-{% block contenido %} 
+{% block contenido %}
+
+ <h1> {{ test }} </h1>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-primary">
@@ -37,15 +39,31 @@
     </div>
     {% for estado in estados %}
     <div class="col-md-3">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">{{ estado.nombre }}</div>
         <div class="panel panel-body">
             {% for hus in sprint.historiausuariosprint_set.all %} 
                 {% for tarea in hus.historiaUsuario.tarea_set.all %}
                     {% if tarea.estado == estado %}
-            <div class="alert alert-danger">
+            <div class="alert alert-info">
                <strong>{{ tarea.titulo }} </strong>
                <p> {{ tarea.descripción }}</p>
+<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#tarea-edit-{{ tarea.id  }}">
+<span class="glyphicon glyphicon-edit">
+</button>
+  <div id="tarea-edit-{{ tarea.id }}" class="collapse">
+      <form action="" method="post" >
+      {% csrf_token %} 
+      <input type="hidden" name="tarea_id" value="{{ tarea.id }}">
+      <label> Estado </label>
+      <select class="form-control" name="tarea_estado">
+          {% for est in estados  %}
+          <option value="{{ est.id }}">{{ est.nombre  }} </option>
+          {% endfor %}
+      </select><br>
+      <button type="submit" class="btn btn-primary"> Registrar  </button>
+      </form>  
+  </div>
             </div>
                     {% endif %}
                 {% endfor %}
