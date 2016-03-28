@@ -25,6 +25,11 @@ urlpatterns = [
         view=views.kanban,
         name='kanban'
     ),
+    url(
+        regex=r'^(?P<nombre>[\w.@+-]+)/tablero/(?P<sprintId>[0-9]+)$',
+        view=views.tablero,
+        name='tablero'
+    ),
 
     # URL pattern for the UserUpdateView
     url(

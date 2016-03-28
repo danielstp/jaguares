@@ -25,6 +25,11 @@ def kanban(request, nombre, sprintId):
                      'historiasUsuariosSprint' : historiasUsuariosSprint, 
                      'sprint' : sprint
                 })
+def tablero(request, nombre, sprintId):
+    proyecto = Proyecto.objects.get(nombre=nombre)
+    return render(request, 'proyecto/tablero.html', {
+         'proyecto' : proyecto
+    })
 
 
 class ProyectoDetailView(LoginRequiredMixin, DetailView):
