@@ -39,6 +39,18 @@
     <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-heading">{{ estado.nombre }}</div>
+        <div class="panel panel-body">
+            {% for hus in sprint.historiausuariosprint_set.all %} 
+                {% for tarea in hus.historiaUsuario.tarea_set.all %}
+                    {% if tarea.estado == estado %}
+            <div class="alert alert-danger">
+               <strong>{{ tarea.titulo }} </strong>
+               <p> {{ tarea.descripción }}</p>
+            </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor  %}            
+        </div>
         </div>
     </div>
     {% endfor %}
