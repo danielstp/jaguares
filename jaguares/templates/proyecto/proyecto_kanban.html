@@ -269,68 +269,25 @@
   <div class="board-wrapper">
     <div class="board-main-content">
       <div class="board-header u-clearfix js-board-header">
-        <a class="board-header-btn board-header-btn-name no-edit board-header-btn-name-with-org-logo" href="#">
-          <img class="board-header-btn-name-org-logo" src="https://trello-logos.s3.amazonaws.com/ac8fd341e792471acdd9698cceff2634/30.png">
-            <span class="board-header-btn-text" style="color:black" > {{ sprint.nombre  }}
-            </span>
+         <div class="proyecto">
+            <h2>Proyecto {{ proyecto.nombre }}</h2>
+         </div>
+          <a class="board-header-btn board-header-btn-name no-edit board-header-btn-name-with-org-logo" href="#">
+            <span class="" style="color:black" >Sprint {{ sprint.nombre  }} </span>
           </a>
-          <a class="board-header-btn board-header-btn-org-name js-open-org-menu board-header-btn-without-icon" href="/jaguares1">
-            <span class="board-header-btn-text">jaguares
-            </span>
-          </a>
-          <div class="board-header-btns mod-left">
-            <a class="board-header-btn js-star-board board-header-btn-enabled" href="#" title="Haga clic en este tablero para marcarlo como favorito o quitarlo de favoritos. Los tableros marcados aparecerán entre los primeros de su lista de tableros." aria-label="Marcar o desmarcar tablero como favorito">
-              <span class="icon-sm icon-star board-header-btn-icon">
-              </span>
-            </a>
-            <a class="board-header-btn hide js-open-desc js-fill-desc" href="#">
-              <span class="icon-sm icon-description board-header-btn-icon">
-              </span>
-            </a>
-            <a id="permission-level" class="board-header-btn perms-btn js-change-vis" href="#" title="Privado. Solo visible para los miembros del tablero.">
-              <span class="board-header-btn-icon icon-sm icon-private">
-              </span>
-              <span class="board-header-btn-text">Privado
-              </span>
-            </a>
-          </div>
-          <div class="board-header-btns mod-right">
-            <a class="board-header-btn board-header-btn-filter-indicator hide js-filter-cards-indicator" href="#">
-              <span class="icon-sm icon-filter board-header-btn-icon">
-              </span>
-              <span class="board-header-btn-text u-text-underline">
-                El filtrado está activado.
-              </span>
-              <span class="icon-sm icon-close board-header-btn-icon-close js-filter-card-clear">
-              </span>
-            </a>
-            <a class="board-header-btn sub-btn hide js-board-header-subscribed" href="#">
-              <span class="icon-sm icon-subscribe board-header-btn-icon">
-              </span>
-              <span class="board-header-btn-text u-text-underline">
-                Suscrito
-              </span>
-            </a>
-            <a class="board-header-btn calendar-btn hide js-calendar" href="#">
-              <span class="icon-sm icon-calendar board-header-btn-icon">
-              </span>
-              <span class="board-header-btn-text u-text-underline">
-                    Calendario
-              </span>
-            </a>
-            <span class="js-plugin-header-btns">
-              <span class="board-header-plugin-btns hide">
-              </span>
-            </span>
-            <a class="board-header-btn mod-show-menu js-show-sidebar" href="#">
-              <span class="icon-sm icon-overflow-menu-horizontal board-header-btn-icon">
-              </span>
-              <span class="board-header-btn-text u-text-underline">
-                    Mostrar menú
-              </span>
-            </a>
-          </div>
+          <div>
+            <span class="" style="color:black; font-weight:normal;" > {{sprint.descripción }}</span>
+            <span class="" style="color:black; font-weight:normal;" > Fecha inicio: {{sprint.inicio }}</span>
+            <span class="" style="color:black; font-weight:normal;" > Fecha fin: {{sprint.fin }}</span>
+            <span class="" style="color:black; font-weight:normal;" >Estado del Sprint: 
+{% if sprint.finalizado  %}
+            <span class="" style="background-color:red; font-weight:normal;" >Finalizado </span>
+{% else  %}
+            <span class="" style="background-color:#61bd4f; font-weight:normal;" >En ejecucion </span>
+{% endif  %}
+	  </div>
         </div>
+        
         <div class="board-canvas">
          <div id="board" class="u-fancy-scrollbar js-no-higher-edits js-list-sortable ui-sortable">
 
