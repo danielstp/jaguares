@@ -66,7 +66,7 @@
                 {% for tarea in hus.historiaUsuario.tarea_set.all %}
                     {% if tarea.estado == estado %}
             <div class="alert alert-info">
-               <strong>{{ tarea.titulo }} </strong>
+               <strong>{{ tarea.titulo }} </strong> <span style="float:right" class="label label-primary"> {{ tarea.historiaUs.titulo }} </span>
                <p> {{ tarea.descripción }}</p>
 <button type="button" class="btn btn-info btn-sm" data-toggle="collapse" data-target="#tarea-edit-{{ tarea.id  }}">
 <span class="glyphicon glyphicon-edit">
