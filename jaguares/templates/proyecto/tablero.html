@@ -43,7 +43,13 @@
             <div class="panel-body">
             {% for hus in sprint.historiausuariosprint_set.all %}
                 <div class="alert alert-success" role="alert"> 
-                    <strong>{{ hus.historiaUsuario.titulo  }}</strong> <br>
+                    <strong>{{ hus.historiaUsuario.titulo  }}</strong> 
+                    {% if hus.historiaUsuario.estaTerminado %}
+                    <span style="float:right" class="label label-success"> DONE </span>
+                    {% else %}
+                    <span style="float:right" class="label label-warning"> EN PROGRESO </span>
+                    {% endif %}
+                    <br>
                     {{ hus.historiaUsuario.descripción }} <br>
                     Prioridad : {{ hus.historiaUsuario.prioridad  }}
                     <br>

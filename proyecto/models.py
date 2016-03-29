@@ -145,7 +145,14 @@ class HistoriaUsuario(models.Model):
 
     def __str__(self):
         return self.titulo
-
+    
+    def estaTerminado(self):
+        tareas = self.tarea_set.all() 
+        for tarea in tareas:
+            if tarea.estado.nombre != 'Done':
+                return False
+        return True
+        
     class Meta:
         verbose_name_plural = _(u'Product Backlog')
 
