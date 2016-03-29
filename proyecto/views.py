@@ -31,11 +31,19 @@ def tablero(request, nombre, sprintId):
     estados = Estado.objects.all()
     test = 'get';
     if request.method == 'POST':
-        estado = request.POST.get('tarea_estado')
-        tarea = request.POST.get('tarea_id')
-        tarea = Tarea.objects.get(pk=tarea)
-        tarea.estado = Estado.objects.get(pk=estado)
-        tarea.save()
+        if request.POST.get('action') == 'tarea_crear':
+           hu_id = request.POST.get('hu_id')
+           tarea_nombre = request.POST.get('tarea_nombre')
+           tarea_descripcion = request.POST.get('tarea_descripcion')
+           historia = HistoriaUsuario.objects.get(pk=hu_id)
+           tarea = Tarea.objects.create(titulo=tarea_nombre, descripción=tarea_descripcion, historiaUs=historia)
+           tarea.save()
+        else:  
+            estado = request.POST.get('tarea_estado')
+            tarea = request.POST.get('tarea_id')
+            tarea = Tarea.objects.get(pk=tarea)
+            tarea.estado = Estado.objects.get(pk=estado)
+            tarea.save()
     
     return render(request, 'proyecto/tablero.html', {
          'proyecto' : proyecto,

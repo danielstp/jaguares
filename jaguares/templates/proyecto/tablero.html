@@ -37,15 +37,17 @@
                     </button> 
                     <div id="historiausuario-{{ hus.historiaUsuario.id }}" class="collapse">
                                           
+                    <h4 class="text-center"><strong> Crear Tarea</strong></h4>
       <form action="" method="post" >
       {% csrf_token %} 
+      <input type="hidden" name="action" value="tarea_crear">
       <input type="hidden" name="hu_id" value="{{ hus.historiaUsuario.id }}">
       <label> Nombre:  </label>
       <input class="form-control" type="text" name="tarea_nombre">
       <label> Descripcion </label>
       <textarea class="form-control" name="tarea_descripcion"> </textarea>
       <br> 
-      <button type="submit" class="btn btn-success"> Registrar  </button>
+      <button type="submit" class="btn btn-success"> OK  </button>
       </form>  
 
 
