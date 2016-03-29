@@ -72,16 +72,24 @@
                     <div id="historiausuario-crear-{{ hus.historiaUsuario.id }}" class="collapse">
                                           
                     <h4 class="text-center"><strong> Crear Tarea</strong></h4>
-      <form action="" method="post" >
+      <form action="" method="post" role="form" data-toggle="validator" novalidate="true" >
       {% csrf_token %} 
       <input type="hidden" name="action" value="tarea_crear">
       <input type="hidden" name="hu_id" value="{{ hus.historiaUsuario.id }}">
-      <label> Nombre:  </label>
-      <input class="form-control" type="text" name="tarea_nombre" required>
-      <label> Descripcion </label>
-      <textarea class="form-control" name="tarea_descripcion" required="true" > </textarea>
-      <br> 
-      <button type="submit" class="btn btn-success"> OK  </button>
+      <div class="form-group has-feedback">
+          <label for="tarea_nombre" class="control-label"  > Nombre  </label>
+          <input class="form-control" type="text" id="tarea_nombre" name="tarea_nombre" required placeholder="Nombre de la tarea">
+          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="form-group has-feedback">
+          <label for="tarea_descripcion" class="control-label"> Descripcion </label>
+          <textarea class="form-control" id="tarea_descripcion" name="tarea_descripcion" required placeholder="Descripcion de la Tarea"></textarea>
+          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="form-group">
+          <button type="submit" class="btn btn-success"> OK  </button>
+      </div> 
+
       </form>  
 
 
@@ -136,4 +144,5 @@
     {% endfor %}
 </div>
 {% endblock  %}
+
 

@@ -48,6 +48,17 @@
     {% block javascript %}
       <script src="{% static 'js/jquery.js' %}"> </script>
       <script src="{% static 'js/bootstrap.js'  %}"></script>
+      <script src="{% static 'js/validator.js'  %}"></script>
+      <script> 
+       $( "form" ).submit(function( event ) {
+           $(this).find('input,textarea,select').focusout();
+           if($(this).find('.has-error').length != 0) {
+               return false;
+           }
+           
+       });
+
+      </script>
     {% endblock javascript %}
   </body>
 </html>
