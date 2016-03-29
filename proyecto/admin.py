@@ -96,7 +96,7 @@ class SprintAdmin(admin.ModelAdmin):
     list_filter = ['nombre','proyecto']
     inlines = [HistoriaUsuarioSprintInline,ComentarioSprintInline,]
     def tablero(self, obj):
-        return ('<a target="_blank" href="/proyecto/%s/kanban/%s">%s</a>') % (obj.proyecto.nombre, obj.id, 'ver tablero')
+        return ('<a target="_blank" href="/proyecto/%s/tablero/%s">%s</a>') % (obj.proyecto.nombre, obj.id, 'ver tablero')
     tablero.allow_tags = True
 
 class HistoriaUsuarioAdmin(admin.ModelAdmin):

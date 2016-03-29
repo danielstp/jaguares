@@ -39,13 +39,20 @@ def tablero(request, nombre, sprintId):
            tarea = Tarea.objects.create(titulo=tarea_nombre, descripción=tarea_descripcion, historiaUs=historia)
            tarea.save()
         else:  
-            estado = request.POST.get('tarea_estado')
             tarea = request.POST.get('tarea_id')
+            titulo = request.POST.get('tarea_nombre')
+            descripcion = request.POST.get('tarea_descripcion')
             responsable = request.POST.get('tarea_miembro')
-            responsable = Miembro.objects.get(pk=responsable)
+            estado = request.POST.get('tarea_estado')
+            if responsable == "0":
+                responsable = None
+            else:             
+                responsable = Miembro.objects.get(pk=responsable)
             tarea = Tarea.objects.get(pk=tarea)
             tarea.estado = Estado.objects.get(pk=estado)
             tarea.miembro = responsable
+            tarea.titulo = titulo
+            tarea.descripción = descripcion
             tarea.save()
     
     return render(request, 'proyecto/tablero.html', {

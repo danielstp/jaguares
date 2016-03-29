@@ -116,22 +116,39 @@
 <span class="glyphicon glyphicon-edit">
 </button>
   <div id="tarea-edit-{{ tarea.id }}" class="collapse">
-      <form action="" method="post" >
+      <form action="" method="post" role="form" data-toggle="validator">
       {% csrf_token %} 
       <input type="hidden" name="tarea_id" value="{{ tarea.id }}">
-      <label> Estado </label>
-      <select class="form-control" name="tarea_estado">
-          {% for est in estados  %}
-          <option value="{{ est.id }}">{{ est.nombre  }} </option>
-          {% endfor %}
-      </select>
-      <label> Responsable </label>
-      <select class="form-control" name="tarea_miembro">
-          {% for miembro in proyecto.miembro_set.all %}
-             <option value="{{ miembro.id }}"> {{ miembro.persona.username  }} </option>
-          {% endfor %}
-      </select><br>
-      <button type="submit" class="btn btn-primary"> OK  </button>
+      <div class="form-group has-feedback">
+          <label for="tarea_nombre" class="control-label"  > Nombre  </label>
+          <input class="form-control" type="text" id="tarea_nombre" value="{{ tarea.titulo }}" name="tarea_nombre" required placeholder="Nombre de la tarea">
+          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="form-group has-feedback">
+          <label for="tarea_descripcion" class="control-label"> Descripcion </label>
+          <textarea class="form-control" id="tarea_descripcion" name="tarea_descripcion" required placeholder="Descripcion de la Tarea">{{ tarea.descripción }}</textarea>
+          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="form-group">
+          <label> Estado </label>
+          <select class="form-control" name="tarea_estado">
+              {% for est in estados  %}
+              <option value="{{ est.id }}" {% if est.nombre == estado.nombre  %} selected {% endif  %} >{{ est.nombre  }} </option>
+              {% endfor %}
+          </select>
+      </div>
+      <div class="form-group">
+          <label> Responsable </label>
+          <select class="form-control" name="tarea_miembro">
+              <option value="0" > Sin Responsable </option>
+              {% for miembro in proyecto.miembro_set.all %}
+              <option value="{{ miembro.id }}" {% if tarea.miembro.persona.username == miembro.persona.username %} selected {% endif %} > {{ miembro.persona.username  }} </option>
+              {% endfor %}
+          </select>
+      </div>
+      <div class="form-group">
+          <button type="submit" class="btn btn-primary"> OK  </button>
+      </div>
       </form>  
   </div>
             </div>
