@@ -315,8 +315,11 @@
               <a class="list-card-title js-card-name" href="#">
                     <span class="card-short-id hide">{{ hus.historiaUsuario.titulo }}
                     </span>
+        {{ hus.historiaUsuario.titulo }}<br>
         {{ hus.historiaUsuario.descripción }}
+
               </a>
+              
               <div class="badges">
                 <div title="Está suscrito a esta tarjeta." class="badge is-icon-only">
                 </div>
@@ -327,6 +330,23 @@
 
                 </div>
               </div>
+
+
+              <form>
+               <label>Titulo: </label>
+               <input type="text" value={{ hus.historiaUsuario.titulo }}></input>
+               <label>Descripcion: </label>
+               <label>{{ hus.historiaUsuario.descripción }}</label>
+               <label>Prioridad: </label>
+               <input type="text"value= {{ hus.historiaUsuario.prioridad }}></input>
+               <label>Tiempo estimado:</label>
+               <input type="text" value = {{ hus.historiaUsuario.tiempoEstimado }} > hrs.</input>
+               <label>Responsable:</label>
+               <input type="text" value = {{ hus.historiaUsuario.persona }}></input>
+               <input type="submit" value="Guardar"></input>
+              </form>
+
+
             </div>
             <p class="list-card-dropzone">Soltar archivos que se van a cargar.</p>
           </div>
@@ -373,6 +393,27 @@
                   <span class="badge-text">progreso : {{ tarea.progreso }}</span>
                 </div>
               </div>
+
+
+              <form>
+               <label>Nombre: </label>
+               <input type="text" value={{ tarea.titulo }}></input>
+               <label>Descripcion: </label>
+               <label>{{ tarea.descripción }}</label>
+               <label>Progreso: </label>
+               <input type="text"value= {{ tarea.progreso }}></input>
+               <label>Reponsable:</label>
+               <select class="form-control">
+                 <option>M</option>
+                 <option>F</option>
+               </select> <a class="btn btn-primary" type="text" value = {{ tarea.miembro }} ></a>
+               <label>Estado:</label>
+               <input type="text" value = {{ tarea.estado }}></input>
+               <input type="text" value = {{ tarea.historiaUs }}></input>
+               <input class="btn btn-primary" type="submit" value="Guardar"></input>
+              </form>
+
+
             </div>
           </div>
 
