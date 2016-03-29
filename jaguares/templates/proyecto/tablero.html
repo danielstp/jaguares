@@ -14,9 +14,24 @@
     </div>
     <div class="col-md-12">
         <div class="panel panel-info">
-            <div class="panel-heading">{{ sprint.nombre }}</div>
-            <div class="panel-body"> {{ sprint.descripción }}
-            
+            <div class="panel-heading"><h4>Sprint {{ sprint.nombre }}</h4></div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-12 col-md-8">
+                <h4>Descripcion: {{ sprint.descripción }}</h4>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                <h4>Inicio: {{ sprint.inicio }}</h4>
+                <h4>Fin: {{ sprint.fin }}</h4>
+                <h4>Estado del sprint: 
+                {% if sprint.finalizado  %}
+                    <span class="label label-danger">Finalizado</span>
+                {% else  %}
+                    <span class="label label-success">En progreso</span>
+                {% endif  %}
+                </h4>
+                </div>
+              </div>
             </div>
         </div>
     </div>
