@@ -8,11 +8,4 @@ before_install:
   - sudo apt-get install -qq libsqlite3-dev libxml2 libxml2-dev libssl-dev libbz2-dev wget curl llvm
 language: python
 python:
-- "3.5"
-
-install:
-  - "pip install hitch"
-  - "cd tests"
-  - "hitch init"
-script:
-  - "hitch test . --extra '{\"xvfb\":true, \"pause_on_failure\":false}'"
+  - "3.6"

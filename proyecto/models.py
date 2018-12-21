@@ -74,13 +74,13 @@ class Proyecto(models.Model):
 
 
 class ComentarioProyecto(Comentario):
-    proyecto = models.ForeignKey(Proyecto)
+    proyecto = models.ForeignKey(Proyecto, on_delete=models.PROTECT)
 
 
 class Miembro(models.Model):
-    rol = models.ForeignKey(Rol)
-    persona = models.ForeignKey(settings.AUTH_USER_MODEL)
-    proyecto = models.ForeignKey(Proyecto)
+    rol = models.ForeignKey(Rol, on_delete=models.PROTECT)
+    persona = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    proyecto = models.ForeignKey(Proyecto, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.persona.get_username() + " (" + self.rol.nombre + ") Proy:" + self.proyecto.nombre
@@ -91,7 +91,7 @@ class Documento(PolymorphicModel):
     descripción = models.CharField(_(u'Descripción'), max_length=250)
     creado =      models.DateTimeField(auto_now=True, editable=False)
     archivo =     models.FileField(upload_to=u'Documentos')
-    dueño =       models.ForeignKey(Miembro)
+    dueño =       models.ForeignKey(Miembro, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.nombre
@@ -99,7 +99,7 @@ class Documento(PolymorphicModel):
 
 class Sprint(models.Model):
     nombre = models.CharField(_(u'Nombre'), max_length=250)
-    proyecto = models.ForeignKey(Proyecto)
+    proyecto = models.ForeignKey(Proyecto, on_delete=models.PROTECT)
     descripción = models.TextField(_(u'descripción'), default='')
     inicio = models.DateTimeField(default=datetime.now())
     fin = models.DateTimeField(default=datetime.now())
@@ -109,24 +109,24 @@ class Sprint(models.Model):
         return (self.fin - self.inicio).days
 
     duración = property(_get_duración)
-    adjunto = models.ForeignKey(Documento, null=True, blank=True)
+    adjunto = models.ForeignKey(Documento, null=True, blank=True, on_delete=models.PROTECT)
 
     def __str__(self):
         return ('Sprint '+ self.nombre) 
 
 
 class ComentarioSprint(Comentario):
-    sprint = models.ForeignKey(Sprint)
+    sprint = models.ForeignKey(Sprint, on_delete=models.PROTECT)
     def __str__(self):
         return self.sprint.nombre
 
 
 class DocumentoSprint(Documento):
-    sprintRef = models.ForeignKey(Sprint)
+    sprintRef = models.ForeignKey(Sprint, on_delete=models.PROTECT)
 
 
 class DocumentoProyecto(Documento):
-    proyecto = models.ForeignKey(Proyecto)
+    proyecto = models.ForeignKey(Proyecto, on_delete=models.PROTECT)
 
     class Meta:
         verbose_name_plural = _(u'Documentos adjuntos Proyecto')
@@ -138,10 +138,10 @@ class HistoriaUsuario(models.Model):
     personaElaboro = models.CharField(_(u'Elaborado por'), max_length=200,default='', editable=False)
     titulo = models.TextField(_(u'Titulo'), default='')
     descripción = models.TextField(_(u'descripción'), default='')
-    prioridad = models.ForeignKey(Prioridad, null=True, blank=True)
+    prioridad = models.ForeignKey(Prioridad, null=True, blank=True, on_delete=models.PROTECT)
     tiempoEstimado = models.DecimalField(_(u'Tiempo estimado'), default=0,max_digits=10,decimal_places=2)
-    persona = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='Responsable', null=True, blank=True)
-    proyecto = models.ForeignKey(Proyecto, null=True, blank=True)
+    persona = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='Responsable', null=True, blank=True, on_delete=models.PROTECT)
+    proyecto = models.ForeignKey(Proyecto, null=True, blank=True, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.titulo
@@ -160,14 +160,14 @@ class HistoriaUsuario(models.Model):
 
 
 class DocumentoHistoriaUsuario(Documento):
-    historiaUsuario = models.ForeignKey(HistoriaUsuario)
+    historiaUsuario = models.ForeignKey(HistoriaUsuario, on_delete=models.PROTECT)
 
 
 class CriterioAceptacion(models.Model):
     resumen = models.CharField(max_length=30)
     descripción = models.CharField(max_length=250)
-    autor = models.ForeignKey(Miembro)
-    historiaUsuario = models.ForeignKey(HistoriaUsuario)
+    autor = models.ForeignKey(Miembro, on_delete=models.PROTECT)
+    historiaUsuario = models.ForeignKey(HistoriaUsuario, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.resumen
@@ -177,8 +177,8 @@ class CriterioAceptacion(models.Model):
 
 
 class HistoriaUsuarioSprint(models.Model):
-    historiaUsuario = models.ForeignKey(HistoriaUsuario)
-    sprint = models.ForeignKey(Sprint, limit_choices_to={'finalizado': False})
+    historiaUsuario = models.ForeignKey(HistoriaUsuario, on_delete=models.PROTECT)
+    sprint = models.ForeignKey(Sprint, limit_choices_to={'finalizado': False}, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.sprint.nombre + " - " + self.historiaUsuario.titulo
@@ -191,24 +191,24 @@ class Tarea(models.Model):
     titulo = models.CharField(_(u'Nombre'),max_length=200,default='')
     descripción = models.TextField(_(u'descripción'),default='')
     progreso = models.DecimalField('Progreso (de 0 a 100)',default=0,max_digits=10,decimal_places=2)
-    documento = models.ForeignKey(Documento,null=True,blank=True)
-    miembro = models.ForeignKey(Miembro,null=True,blank=True, verbose_name='Responsable')
-    estado = models.ForeignKey(Estado,default=1)
-    historiaUs = models.ForeignKey(HistoriaUsuario)
+    documento = models.ForeignKey(Documento,null=True,blank=True, on_delete=models.PROTECT)
+    miembro = models.ForeignKey(Miembro,null=True,blank=True, verbose_name='Responsable', on_delete=models.PROTECT)
+    estado = models.ForeignKey(Estado,default=1, on_delete=models.PROTECT)
+    historiaUs = models.ForeignKey(HistoriaUsuario, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.titulo
 
 
 class ComentarioTarea(Comentario):
-    tarea = models.ForeignKey(Tarea)
+    tarea = models.ForeignKey(Tarea, on_delete=models.PROTECT)
 
 
 class HistoriaTarea(models.Model):
     progreso = models.DecimalField(('Progreso'),max_digits=10,decimal_places=2)
     fecha = models.DateTimeField(('Fecha'),default=datetime.now(),editable=False)
     comentarios = models.TextField(default='')
-    tarea = models.ForeignKey(Tarea)
+    tarea = models.ForeignKey(Tarea, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.tarea.titulo + self.progreso
